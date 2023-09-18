@@ -1,0 +1,23 @@
+:root {
+    --pf-global--primary-color--100: #ff0054;
+    --pf-global--primary-color--200: #d60248;
+    --default-background-color: #97A1CDFF;
+    --link-hover-color: #02679a;
+}
+ 
+.login-pf body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../img/mountains.jpg');
+    background-size: cover;
+}
+ 
+.login-pf a:hover {
+    color: var(--link-hover-color);
+    text-decoration: none;
+}
+
+.pf-c-form-control {
+    --pf-global--primary-color--100: unset;
+}
