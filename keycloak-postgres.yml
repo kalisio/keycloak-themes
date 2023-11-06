@@ -1,9 +1,5 @@
 version: '3'
 
-volumes:
-  postgres_data:
-      driver: local
-
 services:
   postgres:
       image: postgres
@@ -24,10 +20,14 @@ services:
         DB_SCHEMA: public
         DB_PASSWORD: password
         KEYCLOAK_ADMIN: admin
-        KEYCLOAK_ADMIN_PASSWORD: Pa55w0rd
+        KEYCLOAK_ADMIN_PASSWORD: Pass;word1
       volumes:
         - ./themes/kapp:/opt/keycloak/themes/kapp
       ports:
         - 8080:8080
       depends_on:
         - postgres
+
+volumes:
+  postgres_data:
+      driver: local

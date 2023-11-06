@@ -1,18 +1,37 @@
 :root {
-    --pf-global--primary-color--100: #ff0054;
-    --pf-global--primary-color--200: #d60248;
+    --pf-global--primary-color--100: #bf360c;
+    --pf-global--primary-color--200: #bf360c;
     --default-background-color: #97A1CDFF;
-    --link-hover-color: #02679a;
+    --link-color: gray;
+    --link-hover-color: #bf360c;
 }
  
 .login-pf body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url('../img/mountains.jpg');
-    background-size: cover;
+    background: none;
+	background-color: #EFEFEF;
+    height: 100%;
+    width: 100%;
 }
- 
+
+input[type=submit] {
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px rgba(0,0,0,0.5);
+    font-size: 16px;
+    color: white;
+    text-transform: uppercase;
+    padding: 8px;
+    margin-top: 1em;
+}
+
+.login-pf a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
 .login-pf a:hover {
     color: var(--link-hover-color);
     text-decoration: none;
