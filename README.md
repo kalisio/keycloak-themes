@@ -25,7 +25,7 @@ docker compose -f keycloak-postgres.yml down
 3. Login using the following credentials:
   
   - User: admin
-  - Password: Pa55w0rd
+  - Password: Pass;word1
 
 ### Login to kapp
 
