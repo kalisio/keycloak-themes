@@ -1,30 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 :root {
-    --pf-global--primary-color--100: #bf360c;
-    --pf-global--primary-color--200: #bf360c;
-    --default-background-color: #97A1CDFF;
-    --link-color: gray;
-    --link-hover-color: #bf360c;
+    --pf-global--primary-color--100: #000091;
+    --pf-global--primary-color--200: #000091;
+    --default-background-color: #005fbe;
+    --link-color: #005fbe;
+    --link-hover-color: #000091;
 }
- 
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+}
+
+#kc-page-title {
+  font-size: 16px;
+}
+#logoIrsn, #logoOpal {
+    max-height: 50px;
+}
+#logoAnccli {
+    max-width: 100px;
+}
+
 .login-pf body {
     display: flex;
     align-items: center;
     justify-content: center;
     background: none;
-	background-color: #EFEFEF;
+    background-position: center;
+    background-repeat: no-repeat;
     height: 100%;
     width: 100%;
+    justify-content: center;
+    background-size: 300% 300%;
+    background-image: linear-gradient(-45deg, #bed6ff 0%, #ffdadc 100%);
+    -webkit-animation: AnimateBG 30s ease infinite;
+      animation: AnimateBG 30s ease infinite;
+}
+@-webkit-keyframes AnimateBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes AnimateBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.card-pf {
+    border-radius: 1%;
+    box-shadow: rgba(0,0,0,0.5);
 }
 
 input[type=submit] {
     border: none;
     border-radius: 5px;
-    box-shadow: 0px 0px 3px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 3px 005fbe;
     font-size: 16px;
     color: white;
     text-transform: uppercase;
     padding: 8px;
     margin-top: 1em;
+}
+
+.login-pf header {
+    padding: 10px;
 }
 
 .login-pf a {
@@ -37,6 +91,34 @@ input[type=submit] {
     text-decoration: none;
 }
 
+div#k-sponsor {
+  margin-top : 50px;
+}
+
+#kdk-sponsor-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+#kdk-sponsor {
+  margin-left: 5px;
+  border-color: rgba(0,0,0,0);
+  border-radius: 50%;
+  background-color: rgba(0,0,0,0);
+  transition: 0.5s;
+}
+
+#kdk-sponsor:hover {
+  background-color: rgba(0,0,0,0.1);
+}
+
 .pf-c-form-control {
     --pf-global--primary-color--100: unset;
+}
+
+#Klogo {
+  object-fit: cover;
+  object-position: 50% 50%;
 }

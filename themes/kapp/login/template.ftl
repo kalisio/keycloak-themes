@@ -146,10 +146,22 @@
               </div>
           </#if>
         </div>
-      </div>
-
     </div>
   </div>
+
+    <div class="row justify-center text-center items-center" id="k-sponsor">
+        <div id="kdk-sponsor-div">
+            <span id="kdk-sponsor-txt">Réalisé avec le Kalisio's Development Kit</span>
+            <button tabindex="0" type="button" id="kdk-sponsor" data-v-0254ac9e="">
+                <a href="https://kalisio.github.io/kdk/">
+                    <img src="${url.resourcesPath}/img/ext_link.png" aria-hidden="true" width="10px"/>
+                </a>  
+            </button>
+        </div>
+        <a href="https://kalisio.com" target="_blank">
+            <img id="kLogo" loading="lazy" fetchpriority="auto" aria-hidden="true" draggable="false" src="${url.resourcesPath}/img/klogo.webp" width="80px"/>
+        </a>
+    </div>
 </body>
 </html>
 </#macro>
