@@ -3,9 +3,11 @@
 :root {
     --pf-global--primary-color--100: #000091;
     --pf-global--primary-color--200: #000091;
+    --pf-global--secondary-color:#e83c4e;
     --default-background-color: #005fbe;
     --link-color: #005fbe;
-    --link-hover-color: #000091;
+    --link-hover-color: #e83c4e;
+    --transparent-color:rgba(0,0,0,0);
 }
 
 body {
@@ -13,9 +15,19 @@ body {
   font-size: 14px;
 }
 
-#kc-page-title {
-  font-size: 16px;
+#kc-header {
+  text-align: end;
 }
+
+#kc-page-title {
+  color: var(--default-background-color);
+  font-size: 24px;
+}
+
+#partenariat {
+  font-size: 18px;
+}
+
 #logoIrsn, #logoOpal {
     max-height: 50px;
 }
@@ -69,12 +81,17 @@ body {
 input[type=submit] {
     border: none;
     border-radius: 5px;
-    box-shadow: 0px 0px 3px 005fbe;
+    box-shadow: 0px 0px 3px var(--pf-global--primary-color--100);
     font-size: 16px;
     color: white;
     text-transform: uppercase;
     padding: 8px;
     margin-top: 1em;
+}
+
+input[type=submit]:hover {
+    background-color: var(--link-hover-color);
+    box-shadow: 0px 0px 3px var(--pf-global--secondary-color);
 }
 
 .login-pf header {
@@ -104,9 +121,9 @@ div#k-sponsor {
 
 #kdk-sponsor {
   margin-left: 5px;
-  border-color: rgba(0,0,0,0);
+  border-color: var(--transparent-color);
   border-radius: 50%;
-  background-color: rgba(0,0,0,0);
+  background-color: var(--transparent-color);
   transition: 0.5s;
 }
 

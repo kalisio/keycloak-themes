@@ -37,14 +37,8 @@
 </head>
 
 <body class="${properties.kcBodyClass!}">
-<div class="${properties.kcLoginClass!}">
-    <div id="kc-header" class="${properties.kcHeaderClass!}">
-        <!--div id="kc-header-wrapper"
-             class="${properties.kcHeaderWrapperClass!}">${kcSanitize(msg("loginTitleHtml",(realm.displayNameHtml!'')))?no_esc}
-        </div-->
-    </div>
-    <div class="${properties.kcFormCardClass!}">
-        <header class="${properties.kcFormHeaderClass!}">
+    <div class="${properties.kcLoginClass!}">
+        <div id="kc-header" class="${properties.kcHeaderClass!}">
             <#if realm.internationalizationEnabled  && locale.supported?size gt 1>
                 <div class="${properties.kcLocaleMainClass!}" id="kc-locale">
                     <div id="kc-locale-wrapper" class="${properties.kcLocaleWrapperClass!}">
@@ -61,93 +55,99 @@
                     </div>
                 </div>
             </#if>
-        <#if !(auth?has_content && auth.showUsername() && !auth.showResetCredentials())>
-            <#if displayRequiredFields>
-                <div class="${properties.kcContentWrapperClass!}">
-                    <div class="${properties.kcLabelWrapperClass!} subtitle">
-                        <span class="subtitle"><span class="required">*</span> ${msg("requiredFields")}</span>
-                    </div>
-                    <div class="col-md-10">
-                        <h1 id="kc-page-title"><#nested "header"></h1>
-                    </div>
-                </div>
-            <#else>
-                <h1 id="kc-page-title"><#nested "header"></h1>
-            </#if>
-        <#else>
-            <#if displayRequiredFields>
-                <div class="${properties.kcContentWrapperClass!}">
-                    <div class="${properties.kcLabelWrapperClass!} subtitle">
-                        <span class="subtitle"><span class="required">*</span> ${msg("requiredFields")}</span>
-                    </div>
-                    <div class="col-md-10">
-                        <#nested "show-username">
-                        <div id="kc-username" class="${properties.kcFormGroupClass!}">
-                            <label id="kc-attempted-username">${auth.attemptedUsername}</label>
-                            <a id="reset-login" href="${url.loginRestartFlowUrl}">
-                                <div class="kc-login-tooltip">
-                                    <i class="${properties.kcResetFlowIcon!}"></i>
-                                    <span class="kc-tooltip-text">${msg("restartLoginTooltip")}</span>
-                                </div>
-                            </a>
+            <!--div id="kc-header-wrapper"
+                class="${properties.kcHeaderWrapperClass!}">${kcSanitize(msg("loginTitleHtml",(realm.displayNameHtml!'')))?no_esc}
+            </div-->
+        </div>
+        <div class="${properties.kcFormCardClass!}">
+            <header class="${properties.kcFormHeaderClass!}">
+                
+            <#if !(auth?has_content && auth.showUsername() && !auth.showResetCredentials())>
+                <#if displayRequiredFields>
+                    <div class="${properties.kcContentWrapperClass!}">
+                        <div class="${properties.kcLabelWrapperClass!} subtitle">
+                            <span class="subtitle"><span class="required">*</span> ${msg("requiredFields")}</span>
+                        </div>
+                        <div class="col-md-10">
+                            <h1 id="kc-page-title"><#nested "header"></h1>
                         </div>
                     </div>
-                </div>
+                <#else>
+                    <h1 id="kc-page-title"><#nested "header"></h1>
+                </#if>
             <#else>
-                <#nested "show-username">
-                <div id="kc-username" class="${properties.kcFormGroupClass!}">
-                    <label id="kc-attempted-username">${auth.attemptedUsername}</label>
-                    <a id="reset-login" href="${url.loginRestartFlowUrl}">
-                        <div class="kc-login-tooltip">
-                            <i class="${properties.kcResetFlowIcon!}"></i>
-                            <span class="kc-tooltip-text">${msg("restartLoginTooltip")}</span>
+                <#if displayRequiredFields>
+                    <div class="${properties.kcContentWrapperClass!}">
+                        <div class="${properties.kcLabelWrapperClass!} subtitle">
+                            <span class="subtitle"><span class="required">*</span> ${msg("requiredFields")}</span>
                         </div>
-                    </a>
+                        <div class="col-md-10">
+                            <#nested "show-username">
+                            <div id="kc-username" class="${properties.kcFormGroupClass!}">
+                                <label id="kc-attempted-username">${auth.attemptedUsername}</label>
+                                <a id="reset-login" href="${url.loginRestartFlowUrl}">
+                                    <div class="kc-login-tooltip">
+                                        <i class="${properties.kcResetFlowIcon!}"></i>
+                                        <span class="kc-tooltip-text">${msg("restartLoginTooltip")}</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                <#else>
+                    <#nested "show-username">
+                    <div id="kc-username" class="${properties.kcFormGroupClass!}">
+                        <label id="kc-attempted-username">${auth.attemptedUsername}</label>
+                        <a id="reset-login" href="${url.loginRestartFlowUrl}">
+                            <div class="kc-login-tooltip">
+                                <i class="${properties.kcResetFlowIcon!}"></i>
+                                <span class="kc-tooltip-text">${msg("restartLoginTooltip")}</span>
+                            </div>
+                        </a>
+                    </div>
+                </#if>
+            </#if>
+            <#if displayInfo>
+                <div id="kc-info" class="${properties.kcSignUpClass!}">
+                    <div id="kc-info-wrapper" class="${properties.kcInfoAreaWrapperClass!}">
+                        <#nested "info">
+                    </div>
                 </div>
             </#if>
-        </#if>
-      </header>
-      <div id="kc-content">
-        <div id="kc-content-wrapper">
+        </header>
+        <div id="kc-content">
+            <div id="kc-content-wrapper">
 
-          <#-- App-initiated actions should not see warning messages about the need to complete the action -->
-          <#-- during login.                                                                               -->
-          <#if displayMessage && message?has_content && (message.type != 'warning' || !isAppInitiatedAction??)>
-              <div class="alert-${message.type} ${properties.kcAlertClass!} pf-m-<#if message.type = 'error'>danger<#else>${message.type}</#if>">
-                  <div class="pf-c-alert__icon">
-                      <#if message.type = 'success'><span class="${properties.kcFeedbackSuccessIcon!}"></span></#if>
-                      <#if message.type = 'warning'><span class="${properties.kcFeedbackWarningIcon!}"></span></#if>
-                      <#if message.type = 'error'><span class="${properties.kcFeedbackErrorIcon!}"></span></#if>
-                      <#if message.type = 'info'><span class="${properties.kcFeedbackInfoIcon!}"></span></#if>
-                  </div>
-                      <span class="${properties.kcAlertTitleClass!}">${kcSanitize(message.summary)?no_esc}</span>
-              </div>
-          </#if>
+            <#-- App-initiated actions should not see warning messages about the need to complete the action -->
+            <#-- during login.                                                                               -->
+            <#if displayMessage && message?has_content && (message.type != 'warning' || !isAppInitiatedAction??)>
+                <div class="alert-${message.type} ${properties.kcAlertClass!} pf-m-<#if message.type = 'error'>danger<#else>${message.type}</#if>">
+                    <div class="pf-c-alert__icon">
+                        <#if message.type = 'success'><span class="${properties.kcFeedbackSuccessIcon!}"></span></#if>
+                        <#if message.type = 'warning'><span class="${properties.kcFeedbackWarningIcon!}"></span></#if>
+                        <#if message.type = 'error'><span class="${properties.kcFeedbackErrorIcon!}"></span></#if>
+                        <#if message.type = 'info'><span class="${properties.kcFeedbackInfoIcon!}"></span></#if>
+                    </div>
+                        <span class="${properties.kcAlertTitleClass!}">${kcSanitize(message.summary)?no_esc}</span>
+                </div>
+            </#if>
 
-          <#nested "form">
+            <#nested "form">
 
-          <#if auth?has_content && auth.showTryAnotherWayLink()>
-              <form id="kc-select-try-another-way-form" action="${url.loginAction}" method="post">
-                  <div class="${properties.kcFormGroupClass!}">
-                      <input type="hidden" name="tryAnotherWay" value="on"/>
-                      <a href="#" id="try-another-way"
-                         onclick="document.forms['kc-select-try-another-way-form'].submit();return false;">${msg("doTryAnotherWay")}</a>
-                  </div>
-              </form>
-          </#if>
+            <#if auth?has_content && auth.showTryAnotherWayLink()>
+                <form id="kc-select-try-another-way-form" action="${url.loginAction}" method="post">
+                    <div class="${properties.kcFormGroupClass!}">
+                        <input type="hidden" name="tryAnotherWay" value="on"/>
+                        <a href="#" id="try-another-way"
+                            onclick="document.forms['kc-select-try-another-way-form'].submit();return false;">${msg("doTryAnotherWay")}</a>
+                    </div>
+                </form>
+            </#if>
 
-          <#nested "socialProviders">
-
-          <#if displayInfo>
-              <div id="kc-info" class="${properties.kcSignUpClass!}">
-                  <div id="kc-info-wrapper" class="${properties.kcInfoAreaWrapperClass!}">
-                      <#nested "info">
-                  </div>
-              </div>
-          </#if>
+            <#nested "socialProviders">
+            </div>
         </div>
     </div>
-  </div>
 
     <div class="row justify-center text-center items-center" id="k-sponsor">
         <div id="kdk-sponsor-div">
@@ -162,6 +162,7 @@
             <img id="kLogo" loading="lazy" fetchpriority="auto" aria-hidden="true" draggable="false" src="${url.resourcesPath}/img/klogo.webp" width="80px"/>
         </a>
     </div>
+
 </body>
 </html>
 </#macro>
