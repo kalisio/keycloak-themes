@@ -73,6 +73,11 @@
                         </div>
                     </div>
                 <#else>
+                <div id="partenariat" class="d-flex text-center">
+                    <img id="logoIrsn" src="${url.resourcesPath}/img/irsn.png" />
+                    <img id="logoOpal" src="${url.resourcesPath}/img/opal.png" />
+                    en partenariat avec <img id="logoAnccli" src="${url.resourcesPath}/img/anccli.png" />
+                </div>
                     <h1 id="kc-page-title"><#nested "header"></h1>
                 </#if>
             <#else>

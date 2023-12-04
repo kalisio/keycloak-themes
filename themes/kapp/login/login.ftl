@@ -1,9 +1,6 @@
 <#import "template.ftl" as layout>
 <@layout.registrationLayout displayMessage=!messagesPerField.existsError('username','password') displayInfo=realm.password && realm.registrationAllowed && !registrationDisabled??; section>
     <#if section = "header">
-        <img id="logoIrsn" src="${url.resourcesPath}/img/irsn.png" />
-        <img id="logoOpal" src="${url.resourcesPath}/img/opal.png" />
-        <div id="partenariat">En partenariat avec <img id="logoAnccli" src="${url.resourcesPath}/img/anccli.png" /></div>
     <#elseif section = "form">
         <div id="kc-form">
           <div id="kc-form-wrapper">
