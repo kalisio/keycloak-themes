@@ -7,7 +7,8 @@ A sandobx to play with [Keycloak themes](https://www.keycloak.org/docs/latest/se
 ### Deploying the stack
 
 ```bash
-docker compose -f keycloak-postgres.yml up -d
+export POSTGRES_DATA_PATH=/home/$USER/Volumes/postgres
+env UID=${UID} GID=${GID} docker compose -f keycloak-postgres.yml up -d
 ```
 
 ### Removing the stack
