@@ -1,14 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 :root {
-    --pf-global--primary-color--100: #000091;
-    --pf-global--primary-color--200: #000091;
-    --pf-global--secondary-color:#e83c4e;
-    --default-background-color: #005fbe;
-    --link-color: #005fbe;
-    --link-hover-color: #e83c4e;
+    --pf-global--primary-color--100: #067DB8;
+    --pf-global--primary-color--200: #067DB8;
+    --pf-global--secondary-color:#82AADA;
+    --default-background-color: #2F8CC3;
+    --link-color: #2F8CC3;
+    --link-hover-color: #005587;
     --transparent-color:rgba(0,0,0,0);
 }
+
+/*Variables Kalisio {
+  --primary: #067DB8;
+  --secondary: #82AADA;
+  --accent: #2F8CC3;
+  --dark: #005587;
+  --info: var(--accent);
+  --positive: #7bb946;
+  --negative: #e31c3d;
+  --warning: #fdb81e;
+}*/
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -88,7 +99,9 @@ input[type=submit] {
     background-color: var(--default-background-color)!important;
     text-transform: uppercase;
     padding: 8px;
+    margin: auto;
     margin-top: 1em;
+    width: 200px!important;
 }
 
 input[type=submit]:hover {
