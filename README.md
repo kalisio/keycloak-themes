@@ -28,6 +28,17 @@ docker compose -f keycloak-postgres.yml down
   - User: admin
   - Password: Pass;word1
 
-### Login to kapp
+### Login to the apps
 
-1. Go to: http://localhost:8080/realms/kapp/account/#/
+### kapp
+
+Go to: http://localhost:8080/realms/kapp/account/#/
+
+### opal
+
+Go to: http://localhost:8080/realms/opal/account/#/
+
+## Useful links
+
+https://www.keycloak.org/docs/latest/server_development/index.html#_themes
+https://trigodev.com/blog/how-to-customize-keycloak-themes
