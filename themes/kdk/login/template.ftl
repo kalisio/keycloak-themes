@@ -73,7 +73,7 @@
           </q-card>
           <!-- global linkg -->
           <div class="row justify-center items-center">
-            <q-btn flat label="Condtions générales" flat no-caps rounded @click="gcu = true" />
+            <q-btn label="Conditions générales" flat no-caps rounded @click="gcu = true" />
           </div>
         </div>
         <!-- 

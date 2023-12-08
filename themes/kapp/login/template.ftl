@@ -3,6 +3,8 @@
 <html class="${properties.kcHtmlClass!}">
 
 <head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/quasar@2.14.1/dist/quasar.prod.css" rel="stylesheet" type="text/css">
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="robots" content="noindex, nofollow">
@@ -36,140 +38,87 @@
     </#if>
 </head>
 
-<body class="${properties.kcBodyClass!}">
-    <div class="${properties.kcLoginClass!}">
-        <div id="kc-header" class="${properties.kcHeaderClass!}">
-            <#if realm.internationalizationEnabled  && locale.supported?size gt 1>
-                <div class="${properties.kcLocaleMainClass!}" id="kc-locale">
-                    <div id="kc-locale-wrapper" class="${properties.kcLocaleWrapperClass!}">
-                        <div id="kc-locale-dropdown" class="${properties.kcLocaleDropDownClass!}">
-                            <a href="#" id="kc-current-locale-link">${locale.current}</a>
-                            <ul class="${properties.kcLocaleListClass!}">
-                                <#list locale.supported as l>
-                                    <li class="${properties.kcLocaleListItemClass!}">
-                                        <a class="${properties.kcLocaleItemClass!}" href="${l.url}">${l.label}</a>
-                                    </li>
-                                </#list>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </#if>
-            <!--div id="kc-header-wrapper"
-                class="${properties.kcHeaderWrapperClass!}">${kcSanitize(msg("loginTitleHtml",(realm.displayNameHtml!'')))?no_esc}
-            </div-->
+<body>
+    <div id="q-app">
+      <div class="window-height window-width row justify-center bg-grey-4">
+        <!-- 
+          Header 
+        -->
+        <div class="col-12 self-start column justify-start items-center">
+          Header
         </div>
-        <div class="${properties.kcFormCardClass!}">
-            <header class="${properties.kcFormHeaderClass!}">
-                
-            <#if !(auth?has_content && auth.showUsername() && !auth.showResetCredentials())>
-                <#if displayRequiredFields>
-                    <div class="${properties.kcContentWrapperClass!}">
-                        <div class="${properties.kcLabelWrapperClass!} subtitle">
-                            <span class="subtitle"><span class="required">*</span> ${msg("requiredFields")}</span>
-                        </div>
-                        <div class="col-md-10">
-                            <h1 id="kc-page-title"><#nested "header"></h1>
-                        </div>
-                    </div>
-                <#else>
-                <div id="partenariat" class="d-flex text-center">
-                    <div>
-                        <img id="logoIrsn" src="${url.resourcesPath}/img/irsn.png" />
-                        <img id="logoOpal" src="${url.resourcesPath}/img/opal.png" />
-                    </div>
-                    <div>en partenariat avec <img id="logoAnccli" src="${url.resourcesPath}/img/anccli.png" /></div>
+        <!-- 
+          Content 
+        -->
+        <div class="column justify-center" style="min-width: 50%;">
+          <q-card class="full-width bg-white" >
+            <!-- logo -->
+            <q-card-section>
+                <div class="row justify-center items-center ">
+                    <img class="col-2" src="${url.resourcesPath}/img/irsn.png" />
+                    <img class="col-2" src="${url.resourcesPath}/img/opal.png" />
                 </div>
-                    <h1 id="kc-page-title"><#nested "header"></h1>
-                </#if>
-            <#else>
-                <#if displayRequiredFields>
-                    <div class="${properties.kcContentWrapperClass!}">
-                        <div class="${properties.kcLabelWrapperClass!} subtitle">
-                            <span class="subtitle"><span class="required">*</span> ${msg("requiredFields")}</span>
-                        </div>
-                        <div class="col-md-10">
-                            <#nested "show-username">
-                            <div id="kc-username" class="${properties.kcFormGroupClass!}">
-                                <label id="kc-attempted-username">${auth.attemptedUsername}</label>
-                                <a id="reset-login" href="${url.loginRestartFlowUrl}">
-                                    <div class="kc-login-tooltip">
-                                        <i class="${properties.kcResetFlowIcon!}"></i>
-                                        <span class="kc-tooltip-text">${msg("restartLoginTooltip")}</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                <#else>
-                    <#nested "show-username">
-                    <div id="kc-username" class="${properties.kcFormGroupClass!}">
-                        <label id="kc-attempted-username">${auth.attemptedUsername}</label>
-                        <a id="reset-login" href="${url.loginRestartFlowUrl}">
-                            <div class="kc-login-tooltip">
-                                <i class="${properties.kcResetFlowIcon!}"></i>
-                                <span class="kc-tooltip-text">${msg("restartLoginTooltip")}</span>
-                            </div>
-                        </a>
-                    </div>
-                </#if>
-            </#if>
-            <#if displayInfo>
-                <div id="kc-info" class="${properties.kcSignUpClass!}">
-                    <div id="kc-info-wrapper" class="${properties.kcInfoAreaWrapperClass!}">
-                        <#nested "info">
-                    </div>
+                <div class="row justify-center items-center text-dark" style="font-size: 20px;">
+                    en partenariat avec <img class="col-2" src="${url.resourcesPath}/img/anccli.png" />
                 </div>
-            </#if>
-        </header>
-        <div id="kc-content">
-            <div id="kc-content-wrapper">
-
-            <#-- App-initiated actions should not see warning messages about the need to complete the action -->
-            <#-- during login.                                                                               -->
-            <#if displayMessage && message?has_content && (message.type != 'warning' || !isAppInitiatedAction??)>
-                <div class="alert-${message.type} ${properties.kcAlertClass!} pf-m-<#if message.type = 'error'>danger<#else>${message.type}</#if>">
-                    <div class="pf-c-alert__icon">
-                        <#if message.type = 'success'><span class="${properties.kcFeedbackSuccessIcon!}"></span></#if>
-                        <#if message.type = 'warning'><span class="${properties.kcFeedbackWarningIcon!}"></span></#if>
-                        <#if message.type = 'error'><span class="${properties.kcFeedbackErrorIcon!}"></span></#if>
-                        <#if message.type = 'info'><span class="${properties.kcFeedbackInfoIcon!}"></span></#if>
-                    </div>
-                        <span class="${properties.kcAlertTitleClass!}">${kcSanitize(message.summary)?no_esc}</span>
-                </div>
-            </#if>
-
-            <#nested "form">
-
-            <#if auth?has_content && auth.showTryAnotherWayLink()>
-                <form id="kc-select-try-another-way-form" action="${url.loginAction}" method="post">
-                    <div class="${properties.kcFormGroupClass!}">
-                        <input type="hidden" name="tryAnotherWay" value="on"/>
-                        <a href="#" id="try-another-way"
-                            onclick="document.forms['kc-select-try-another-way-form'].submit();return false;">${msg("doTryAnotherWay")}</a>
-                    </div>
-                </form>
-            </#if>
-
-            <#nested "socialProviders">
-            </div>
+            </q-card-section>
+            <!-- form -->
+            <q-card-section>
+              <div class="row justify-center items-center">
+                <#nested "form">
+              </div>
+            </q-card-section>
+            <!-- social providers -->
+            <q-card-section>
+              <div class="row justify-center items-center">
+                <#nested "socialProviders">
+              </div>
+            </q-card-section>
+          </q-card>
+          <!-- global linkg -->
+          <div class="row justify-center items-center">
+            <q-btn label="Conditions générales" flat no-caps rounded @click="gcu = true" />
+          </div>
         </div>
+        <!-- 
+          Footer 
+        -->
+        <div class="col-12 self-end column justify-end items-center">
+          <div class="row items-center">
+            <span id="kdk-txt">Réalisé avec le Kalisio's Development Kit</span>
+            <q-btn id="kdk-link" icon="link" tooltip="MORE_ABOUT_KDK" size="sm" href="https://kalisio.github.io/kdk" target="_blank" flat round />
+          </div>
+          <a href="https://kalisio.com" target="_blank">
+            <img id="kLogo" loading="lazy" src="${url.resourcesPath}/img/kalisio.webp" width="80px"/>
+          </a>
+        </div>
+        <!--
+         Dialogs
+        -->
+        <q-dialog v-model="gcu">
+          <q-card style="width: 100%">
+            <q-card-section class="row items-center no-wrap">
+              <div>
+                <div class="text-weight-bold">Dialog</div>
+                <div class="text-grey">Example</div>
+              </div>
+
+            <q-space />
+
+            </q-card-section>
+             <q-card-actions align="right">
+                <q-btn label="Close" color="primary" @click="gcu = false" />
+            </q-card-actions>
+          </q-card>
+        </q-dialog>
     </div>
-
-    <div class="row justify-center text-center items-center" id="k-sponsor">
-        <div id="kdk-sponsor-div">
-            <span id="kdk-sponsor-txt">Réalisé avec le Kalisio's Development Kit</span>
-            <button tabindex="0" type="button" id="kdk-sponsor" data-v-0254ac9e="">
-                <a href="https://kalisio.github.io/kdk/">
-                    <img src="${url.resourcesPath}/img/ext_link.png" aria-hidden="true" width="10px"/>
-                </a>  
-            </button>
-        </div>
-        <a href="https://kalisio.com" target="_blank">
-            <img id="kLogo" loading="lazy" fetchpriority="auto" aria-hidden="true" draggable="false" src="${url.resourcesPath}/img/klogo.webp" width="80px"/>
-        </a>
-    </div>
-
+    <!-- 
+      Use Vue and Quasar with UMD version
+      For more information, refer to https://quasar.dev/start/umd#installation
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quasar@2.14.1/dist/quasar.umd.prod.js"></script>
+    <script src="${url.resourcesPath}/js/quasar.js"></script>
 </body>
 </html>
 </#macro>
