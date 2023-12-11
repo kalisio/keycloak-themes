@@ -1,6 +1,6 @@
 <#macro registrationLayout bodyClass="" displayInfo=false displayMessage=true displayRequiredFields=false>
 <!DOCTYPE html>
-<html class="${properties.kcHtmlClass!}">
+<html>
 
 <head>
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css">
@@ -45,17 +45,17 @@
           Header 
         -->
         <div class="col-12 self-start column justify-start items-center">
-          Header
+          <#include "fragments/header.flt">
         </div>
         <!-- 
           Content 
         -->
         <div class="column justify-center" style="min-width: 50%;">
           <q-card class="full-width bg-white" >
-            <!-- logo -->
+            <!-- banner -->
             <q-card-section>
               <div class="row justify-center items-center">
-                <img src="${url.resourcesPath}/img/kdk.png" />
+                <#include "fragments/banner.flt">
               </div>
             </q-card-section>
             <!-- form -->
@@ -71,42 +71,15 @@
               </div>
             </q-card-section>
           </q-card>
-          <!-- global linkg -->
-          <div class="row justify-center items-center">
-            <q-btn label="Conditions générales" flat no-caps rounded @click="gcu = true" />
-          </div>
+          <!-- global options -->
+          <#include "fragments/options.flt">
         </div>
         <!-- 
           Footer 
         -->
         <div class="col-12 self-end column justify-end items-center">
-          <div class="row items-center">
-            <span id="kdk-txt">Réalisé avec le Kalisio's Development Kit</span>
-            <q-btn id="kdk-link" icon="link" tooltip="MORE_ABOUT_KDK" size="sm" href="https://kalisio.github.io/kdk" target="_blank" flat round />
-          </div>
-          <a href="https://kalisio.com" target="_blank">
-            <img id="kLogo" loading="lazy" src="${url.resourcesPath}/img/kalisio.webp" width="80px"/>
-          </a>
+          <#include "fragments/footer.flt">
         </div>
-        <!--
-         Dialogs
-        -->
-        <q-dialog v-model="gcu">
-          <q-card style="width: 75%">
-            <q-card-section class="row items-center no-wrap">
-              <div>
-                <div class="text-weight-bold">Dialog</div>
-                <div class="text-grey">Example</div>
-              </div>
-
-              <q-space />
-
-            </q-card-section>
-             <q-card-actions align="right">
-                <q-btn flat label="Close" color="primary" @click="gcu = false" />
-            </q-card-actions>
-          </q-card>
-        </q-dialog>
     </div>
     <!-- 
       Use Vue and Quasar with UMD version
@@ -114,6 +87,7 @@
     -->
     <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/quasar@2.14.1/dist/quasar.umd.prod.js"></script>
+    <script src="${url.resourcesPath}/js/brand.js"></script>
     <script src="${url.resourcesPath}/js/quasar.js"></script>
 </body>
 </html>

@@ -1,0 +1,13 @@
+<q-dialog v-model="showGDPR">
+  <q-card style="width: 75%">
+    <q-card-section>
+      <div class="text-h6">${msg('gdpr')}</div>
+    </q-card-section>
+    <q-card-section>
+       
+    </q-card-section>
+      <q-card-actions align="right">
+        <q-btn label="${msg('close')}" color="primary" @click="showGDPR = false" />
+    </q-card-actions>
+  </q-card>
+</q-dialog>

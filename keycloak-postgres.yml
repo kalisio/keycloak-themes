@@ -23,8 +23,8 @@ services:
         KEYCLOAK_ADMIN: admin
         KEYCLOAK_ADMIN_PASSWORD: Pass;word1
       volumes:
+        - ./themes/kdk:/opt/keycloak/themes/kdk      
         - ./themes/kapp:/opt/keycloak/themes/kapp
-        - ./themes/kdk:/opt/keycloak/themes/kdk
         - ${IRSN_DEVELOPMENT_DIR}/opal-keycloak-theme/theme:/opt/keycloak/themes/opal
       ports:
         - 8080:8080

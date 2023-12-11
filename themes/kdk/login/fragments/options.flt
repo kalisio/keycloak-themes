@@ -1,0 +1,20 @@
+<div class="row justify-center items-center q-gutter-xs">
+  <div>
+    <q-btn flat label="A propos" flat no-caps rounded @click="showAbout = true" />
+  </div>
+  <div>-</div>
+  <div>
+    <q-btn flat label="Condtions générales" flat no-caps rounded @click="showLegal = true" />
+  </div>
+  <div>-</div>
+  <div>
+    <q-btn flat label="Politique de données" flat no-caps rounded @click="showGDPR = true" />
+  </div>
+</div>
+
+
+<#include "options/about.flt">
+<#include "options/legal.flt">
+<#include "options/gdpr.flt">
+
+

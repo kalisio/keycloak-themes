@@ -30,6 +30,10 @@ docker compose -f keycloak-postgres.yml down
 
 ### Login to the apps
 
+### kdk
+
+Go to: http://localhost:8080/realms/kdk/account/#/
+
 ### kapp
 
 Go to: http://localhost:8080/realms/kapp/account/#/

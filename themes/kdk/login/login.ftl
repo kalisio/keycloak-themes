@@ -1,66 +1,61 @@
 <#import "template.ftl" as layout>
 <@layout.registrationLayout displayMessage=!messagesPerField.existsError('username','password') displayInfo=realm.password && realm.registrationAllowed && !registrationDisabled??; section>
+    <!--
+        Form section
+    -->
     <#if section = "form">
-        <div id="kc-form" class="full-width q-pa-md">
+        <div id="kc-form" class="full-width">
           <div id="kc-form-wrapper">
             <#if realm.password>
                 <form id="kc-form-login" onsubmit="login.disabled = true; return true;" action="${url.loginAction}" method="post">
                     <#if !usernameHidden??>
-                        <div class="${properties.kcFormGroupClass!}">
-                            <label for="username" class="${properties.kcLabelClass!}"><#if !realm.loginWithEmailAllowed>${msg("username")}<#elseif !realm.registrationEmailAsUsername>${msg("usernameOrEmail")}<#else>${msg("email")}</#if></label>
-
-                            <q-input id="username" filled type="email" />
-
-                            <!--input tabindex="1" id="username" class="${properties.kcInputClass!}" name="username" value="${(login.username!'')}"  type="text" autofocus autocomplete="off"
-                                   aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>"
-                            /-->
-
+                        <div class="q-py-xs column">
+                            <!--label for="username" class="${properties.kcLabelClass!}"><#if !realm.loginWithEmailAllowed>${msg("username")}<#elseif !realm.registrationEmailAsUsername>${msg("usernameOrEmail")}<#else>${msg("email")}</#if></label -->    
                             <#if messagesPerField.existsError('username','password')>
-                                <span id="input-error" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
-                                        ${kcSanitize(messagesPerField.getFirstError('username','password'))?no_esc}
-                                </span>
+                                <q-input 
+                                    id="username" v-model="email" label="${msg('email')}" filled type="email" :error="true"
+                                    error-message="${kcSanitize(messagesPerField.getFirstError('username','password'))?no_esc}"
+                                />
+                            <#else>
+                                <q-input id="username" v-model="email" label="${msg('email')}" filled type="email" />
                             </#if>
-
                         </div>
                     </#if>
-
-                    <div class="${properties.kcFormGroupClass!}">
-                        <label for="password" class="${properties.kcLabelClass!}">${msg("password")}</label>
-
-                        <q-input id="password" filled type="password" autocomplete="off" />
-
-                        <!--div class="${properties.kcInputGroup!}">
-                            <input tabindex="2" id="password" class="${properties.kcInputClass!}" name="password" type="password" autocomplete="off"
-                                   aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>"
-                            />
-                            
-                        </div-->
-
-                        <#if usernameHidden?? && messagesPerField.existsError('username','password')>
-                            <span id="input-error" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
-                                    ${kcSanitize(messagesPerField.getFirstError('username','password'))?no_esc}
-                            </span>
+                    <div class="q-py-xs column">
+                        <#if usernameHidden?? && messagesPerField.existsError('username')>
+                            <q-input 
+                                id="password" v-model="password" label="${msg('password')}" filled :type="showPassword ? 'text' : 'password'" autocomplete="off" :error="true"
+                                error-message="${kcSanitize(messagesPerField.getFirstError('username','password'))?no_esc}"
+                            >
+                                <template v-slot:append>
+                                    <q-icon :name="showPassword ? 'visibility' : 'visibility_off'" class="cursor-pointer" @click="showPassword = !showPassword" />
+                                </template>
+                            </q-input>
+                        <#else>
+                            <q-input id="password" v-model="password" label="${msg('password')}" filled :type="showPassword ? 'text' : 'password'" autocomplete="off">
+                                <template v-slot:append>
+                                    <q-icon :name="showPassword ? 'visibility' : 'visibility_off'" class="cursor-pointer" @click="showPassword = !showPassword" />
+                                </template>
+                            </q-input>
                         </#if>
                     </div>
-
-                    <div class="${properties.kcFormGroupClass!} ${properties.kcFormSettingClass!}">
-                        <div id="kc-form-options">
-                            <#if realm.rememberMe && !usernameHidden??>
-                                <div class="checkbox">
-                                    <label>
-                                        <#if login.rememberMe??>
-                                            <input tabindex="3" id="rememberMe" name="rememberMe" type="checkbox" checked> ${msg("rememberMe")}
-                                        <#else>
-                                            <input tabindex="3" id="rememberMe" name="rememberMe" type="checkbox"> ${msg("rememberMe")}
-                                        </#if>
-                                    </label>
-                                </div>
-                            </#if>
-                        </div>
+                    <!-- Options -->
+                    <div id="row items-center">
+                        <#if realm.rememberMe && !usernameHidden??>
+                            <div class="q-py-md checkbox">
+                                <label>
+                                    <#if login.rememberMe??>
+                                        <input tabindex="3" id="rememberMe" name="rememberMe" type="checkbox" checked> ${msg("rememberMe")}
+                                    <#else>
+                                        <input tabindex="3" id="rememberMe" name="rememberMe" type="checkbox"> ${msg("rememberMe")}
+                                    </#if>
+                                </label>
+                            </div>
+                        </#if>
                     </div>
                     <!-- Actions -->
                     <div class="q-pa-md row justify-center items-center">
-                      <q-btn id="kc-login" label="${msg('doLogIn')}" color="primary" type="submit" />
+                      <q-btn id="kc-login" label="${msg('login')}" color="primary" type="submit" />
                     </div>      
                 </form>
                 <!--
@@ -68,13 +63,16 @@
                 -->
                 <div class="row justify-center items-center">
                   <#if realm.resetPasswordAllowed>
-                    <q-btn label="${msg('doForgotPassword')}" flat no-caps href="${url.loginResetCredentialsUrl}" />
+                    <q-btn label="${msg('doForgotPassword')}" flat rounded no-caps href="${url.loginResetCredentialsUrl}" />
                   </#if>
                 </div>
             </#if>
             </div>
         </div>
-        <script type="module" src="${url.resourcesPath}/js/passwordVisibility.js"></script>
+        
+    <!--
+        Info section
+    -->        
     <#elseif section = "info" >
         <#if realm.password && realm.registrationAllowed && !registrationDisabled??>
             <div id="kc-registration-container">
@@ -84,6 +82,9 @@
                 </div>
             </div>
         </#if>
+    <!--
+        SocialProviders sections
+    -->
     <#elseif section = "socialProviders" >
         <#if realm.password && social.providers??>
             <div id="kc-social-providers" class="${properties.kcFormSocialAccountSectionClass!}">
