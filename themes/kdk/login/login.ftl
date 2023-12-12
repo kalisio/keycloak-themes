@@ -59,7 +59,7 @@
                     </div>      
                 </form>
                 <!--
-                  Extra actions
+                  Actions
                 -->
                 <div class="row justify-center items-center">
                   <#if realm.resetPasswordAllowed>
@@ -69,7 +69,6 @@
             </#if>
             </div>
         </div>
-        
     <!--
         Info section
     -->        

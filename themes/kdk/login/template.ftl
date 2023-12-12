@@ -87,7 +87,6 @@
     -->
     <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/quasar@2.14.1/dist/quasar.umd.prod.js"></script>
-    <script src="${url.resourcesPath}/js/brand.js"></script>
     <script src="${url.resourcesPath}/js/quasar.js"></script>
 </body>
 </html>
