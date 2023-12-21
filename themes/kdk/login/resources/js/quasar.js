@@ -25,11 +25,7 @@ const app = Vue.createApp({
 })
 // Tell Vue to use Quasar using the specified configuration
 app.use(Quasar, {
-  config: {
-    brand: {
-      primary: '#293341'
-    }
-  }
+  config
 })
 // Install translations files
 Quasar.lang.set(Quasar.lang.fr)
