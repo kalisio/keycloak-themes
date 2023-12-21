@@ -4,4 +4,4 @@
   </div>
 </div>
 
-<#include "options/legal.flt">
+<#include "options/legal.ftl">

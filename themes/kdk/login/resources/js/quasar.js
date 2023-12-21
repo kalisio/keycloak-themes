@@ -9,10 +9,17 @@ const app = Vue.createApp({
     return {
       email: Vue.ref(''),
       password: Vue.ref(''),
+      loginLoading: Vue.ref(false),
+      rememberMe: Vue.ref(false),
+      resetPasswordLoading: Vue.ref(false),
+      passwordNew: Vue.ref(''),
+      passwordConfirm: Vue.ref(''),
+      updatedPasswordLoading: Vue.ref(false),
       showPassword: Vue.ref(false),
+      showPasswordNew: Vue.ref(false),
+      showPasswordConfirm: Vue.ref(false),
       showAbout: Vue.ref(false),
       showLegal: Vue.ref(false),
-      showGDPR: Vue.ref(false),
     }
   }
 })
@@ -28,4 +35,6 @@ app.use(Quasar, {
 Quasar.lang.set(Quasar.lang.fr)
 // Mount the Quasar app
 app.mount('#q-app')
+
+
 
