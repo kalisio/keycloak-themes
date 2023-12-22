@@ -43,7 +43,7 @@ The [theme.properties](https://www.keycloak.org/docs/latest/server_development/i
 
 #### config.js
 
-The `config.js` file allows configuring **Quasar**. It defines a [Quasar Config Object](https://quasar.dev/start/umd/#quasar-config-object). 
+The `config.js` file allows you to configurr **Quasar** by defining a [Quasar Config Object](https://quasar.dev/start/umd/#quasar-config-object). 
 
 > [!TIP]
 > Use the Quasar Config Object to define the brand colors to be used in the application.
