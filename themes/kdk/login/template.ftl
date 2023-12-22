@@ -1,6 +1,6 @@
 <#macro registrationLayout bodyClass="" displayInfo=false displayMessage=true displayRequiredFields=false>
 <!DOCTYPE html>
-<html>
+<html <#if realm.internationalizationEnabled> lang="${locale.currentLanguageTag}"</#if>>
 
 <head>
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css">
@@ -30,7 +30,7 @@
     <#list properties.scripts?split(' ') as script>
       <script src="${url.resourcesPath}/${script}" type="text/javascript"></script>
     </#list>
-  </#if>  
+  </#if> 
 </head>
 
 <body>
@@ -80,6 +80,12 @@
   <script src="https://cdn.jsdelivr.net/npm/quasar@2.14.1/dist/quasar.umd.prod.js"></script>
   <script src="${url.resourcesPath}/js/config.js"></script>  
   <script src="${url.resourcesPath}/js/quasar.js"></script>
+  <!-- Install Quasar language pack -->
+  <#if properties.locales?has_content>
+    <#list properties.locales?split(',') as locale>
+      <script>Quasar.lang.set(Quasar.lang.${locale})</script>
+    </#list>      
+  </#if> 
 </body>
 </html>
 </#macro>
