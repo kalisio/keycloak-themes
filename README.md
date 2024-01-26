@@ -23,7 +23,7 @@ The [KDK](./themes/kdk) extends the Keycloak's **base** them with the following 
 
 The `template.ftl` file extends the Keycloak `template.ftl` by defining 4 **fragments**: 
 
-![Template fragments](./docs/keycloak-themes-fragments.png)
+![Template fragments](docs/keycloak-themes-fragments.png)
 
 > [!NOTE]
 > Remember that all these fragments are shared by all the different login forms.
