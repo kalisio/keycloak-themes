@@ -1,10 +1,8 @@
-# keycloak-themes
+_**Kalisio's [Keycloak themes](https://www.keycloak.org/docs/latest/server_development/#_themes)**_
 
-Kalisio's [Keycloak themes](https://www.keycloak.org/docs/latest/server_development/#_themes)
-
-This project brings together a set of Keycloak themes used by Kalisio applications.
-Just like the applications developed by Kalisio, these themes are based on the use of the [Quasar Framework](https://quasar.dev/)
-This allows to have the same look & feel between the applications and the different user interfaces provided by Keycloak.
+This project brings together a set of Keycloak themes used by [Kalisio](https://kalisio.com) applications.
+Just like the applications developed by **Kalisio**, these themes are based on the use of the [Quasar Framework](https://quasar.dev/)
+This allows to have the same look & feel between the applications and the different user interfaces provided by [Keycloak](https://www.keycloak.org/).
 
 > [!Note]
 >Before going any further, it is essential to understand how themes work in Keycloak and how one can create a theme. Please refer to the [official documentation](https://www.keycloak.org/docs/latest/server_development/index.html#_themes) and [Apache FreeMarker](https://freemarker.apache.org/index.html).
@@ -12,9 +10,9 @@ This allows to have the same look & feel between the applications and the differ
 >* [https://trigodev.com/blog/how-to-customize-keycloak-themes](https://trigodev.com/blog/how-to-customize-keycloak-themes)
 
 
-## Understanding the KDK core theme
+## Understanding the KDK theme
 
-The [KDK](./themes/kdk) extends the Keycloak's **base** them with the following types of customization:
+The [KDK](./themes/kdk) theme extends the Keycloak's **base** theme with the following types of customization:
 * **Login**
 
 > [!IMPORTANT]
