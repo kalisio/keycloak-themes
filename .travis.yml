@@ -1,30 +1,30 @@
 language: node_js
 node_js:
-  - '16'
+- '16'
 services:
-  - docker
+- docker
 
 notifications:
   email: false
   slack:
     rooms:
-      - secure: UWogAh6p3Au6dF1jKwAUOdzoGgVYC3NUXka2qaeCPHzh5i0He0vgKPHhAZaAzT5oYvylYJ2VycA9qW2oRG9DaFkazH2T7terpC6jde/UZkP9oA8yhyy2jMdmJvJbx1YJdqIYaqf7kIQeVrt09kHH6S5ebVNcpLqfbXIYSgulLSPLyG2Mu0TcXjxdlHxJxkLJIfHoMzLBhQcmbVWk7xcLKaCyMDmxaDxiOTfYRuKWZUQygkhlp6hu6CUK0GrdGB0RhEu9byRZ8KbgyA6Tvrfem8PRcQCjnl9MobH3nd1GeDWRl703qVGUFe31HlaStLUrz9EoCWOicIfWd/0rrfkLXn3TeWgcruMU9Qm//q0CBzB//onOOE2mXV/h5JjjwdlNRVKlvruhyKzgV8qkxspxW7dJSXcPfOr3mhZqQ+YuYxk81dKUUm2xrIo2s/Wwq6h+fuGxOSEXnc6ECQA1ceuMlkwoH6RoUwpL9qFVPsij9KewJUiTURVpDJ47qq9/MI86Krhd44Y1H4HFsrKLYFK8eJqKdGA80LMej1x0RYD8Ga/rxaSP33pbkLu62cL6ySAvtyIlZFTfBX7SktHhirwZtSHuG0eaDyzyDQFGWM53NJtIpK+vWd9B/tJarqhIDcpRytUXi1WX7OAd6vuag8QhMCtLeWoOsqnyUFLbIEQX9MQ=
+      secure: xMdLaZuz9OEJJ6i4ZGgW+kVsykYnTFCdh6eZNM1E1jF307WyM0Ja1CSBCAOxpZsLoXh5ZUorud4LScFco59LpPzBDTvhbLw0oaxBHXOiGF+z1QQ9AXWm4LwN+R9rnY0Rb7IhqhndVLRXATT0XI8pGhOPCkx4buJdKqn7fJISvY1TkPzbyVPuZb41kcF/+LMJTihBxa6JxgiAZIxzlv6OKFTB4XxBWmeYWPfUyPFbNJzYCFniny9Y5OliqL5djws6DvIz0ScYHApVTg6vWO2F+aXY6oEHgU9XpFA19DFpVysvp2fYPuxfSsEcllshHVUe331r0f8dMswDq8bBnfohNmj2B5fs+vFBLzRKX1dtKSBIO/AEa8lqgbR85dwP6G5f3mDqHMU5YJVD43wkI9xqBoJAySfvz1juUMicRAb+dRTCcvP+D9vEjkPdRMhsNiVJCUQlEy+yN7c0A/rC93dzKVNf5dqs/uDb1CRrFTbWnJPS1GTurHau+q444P9RpZw52lvG8oYZtoCNL9d+ZR3yik6DCxk+a+BZUZ5Zt0R4SLeie+IaSKYmFcWHAB+ss5EfNK5IWJ14oOIpSWi1lf6hoeRzt8dTVXkeFNWYeOXfgfkskfVIkx3azNR7km4nS2sqVrhwrjivN3VNQLphI56eWmIBCyuH3He6lDH/CQq6H74=
     on_success: always
-    on_failure: always  
+    on_failure: always
 
 before_script:
-  - docker login -u="$DOCKER_USER" -p="$DOCKER_PASSWORD"
+- docker login -u="$DOCKER_USER" -p="$DOCKER_PASSWORD"
 
 script:
-  - |
-   IMAGE_NAME="kalisio/kdk-keycloak-theme"
-   if [[ -z "$TRAVIS_TAG" ]]; then
-     IMAGE_TAG=latest
-   else
-     IMAGE_TAG=$(node -p -e "require('./package.json').version")
-   fi
-   echo Building $IMAGE_NAME:$IMAGE_TAG
-   docker build -f dockerfile -t $IMAGE_NAME:$IMAGE_TAG .
+- |
+  IMAGE_NAME="kalisio/kdk-keycloak-theme"
+  if [[ -z "$TRAVIS_TAG" ]]; then
+    IMAGE_TAG=latest
+  else
+    IMAGE_TAG=$(node -p -e "require('./package.json').version")
+  fi
+  echo Building $IMAGE_NAME:$IMAGE_TAG
+  docker build -f dockerfile -t $IMAGE_NAME:$IMAGE_TAG .
 
 deploy:
   provider: script
