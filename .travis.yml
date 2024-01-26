@@ -17,13 +17,13 @@ before_script:
 
 script:
   - |
-   REPO_SLUG="$TRAVIS_REPO_SLUG"  
-   IMAGE_NAME=${REPO_SLUG,,} # to lowercase
+   IMAGE_NAME=kdk-keycloak-theme
    if [[ -z "$TRAVIS_TAG" ]]; then
      IMAGE_TAG=latest
    else
      IMAGE_TAG=$(node -p -e "require('./package.json').version")
    fi
+   echo Building $IMAGE_NAME:$IMAGE_TAG
    docker build dockerfile -t $IMAGE_NAME:$IMAGE_TAG .
 
 deploy:
