@@ -17,7 +17,7 @@ before_script:
 
 script:
   - |
-   IMAGE_NAME=kdk-keycloak-theme
+   IMAGE_NAME="kalisio/kdk-keycloak-theme"
    if [[ -z "$TRAVIS_TAG" ]]; then
      IMAGE_TAG=latest
    else
