@@ -17,6 +17,10 @@ This allows to have the same look & feel between the applications and the differ
 The [KDK](./themes/kdk) extends the Keycloak's **base** them with the following types of customization:
 * **Login**
 
+> [!IMPORTANT]
+> **Account**, **Admin** types can be easily extented from the **keycloak.v2** theme and we feel it is not worth providing such custom types in this theme.
+In the [kapp](./themes/kapp/) folder, we provide you with an example of customization of these different types.
+
 ### Login 
 
 **Login** forms specialize a **FreeMaker** template file, `template.ftl`, that overwrites the default Keycloak `template.ftl` file. It is built on **Quasar Framework** to enable the use of web components that enhance user experience and simplify the use of Keycloak CSS classes.
@@ -27,12 +31,6 @@ The provided `template.ftl` introduces 4 areas, called **fragments** which can b
 
 > [!NOTE]
 > Remember that all these fragments are shared by all the different login forms.
-
-### Account
-
-
-
-### Admin
 
 ## Extending the KDK theme
 
