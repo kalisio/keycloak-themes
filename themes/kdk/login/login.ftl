@@ -44,15 +44,8 @@
           <div class="row justify-between items-center no-wrap">
             <#if realm.rememberMe && !usernameHidden??>
               <div>
-                <q-toggle name="rememberMe" v-model="rememberMe" label="${msg('rememberMe')}" />
+                <q-toggle id="rememberMe" name="rememberMe" v-model="rememberMe" false-value="off" true-value="on" label="${msg('rememberMe')}" />
               </div>
-              <!--label>
-                <#if login.rememberMe??>
-                  <input tabindex="3" id="rememberMe" name="rememberMe" type="checkbox" checked> ${msg("rememberMe")}
-                <#else>
-                  <input tabindex="3" id="rememberMe" name="rememberMe" type="checkbox"> ${msg("rememberMe")}
-                </#if>
-              </label-->
             </#if>
             <#if realm.resetPasswordAllowed>
               <div>

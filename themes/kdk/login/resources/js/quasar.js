@@ -30,9 +30,9 @@ const app = Vue.createApp({
     // Expose 
     return {
       email: Vue.ref(''),
-      password: Vue.ref(''),
+      password: Vue.ref(''),  
+      rememberMe: Vue.ref('off'),
       loginLoading: Vue.ref(false),
-      rememberMe: Vue.ref(false),
       resetPasswordLoading: Vue.ref(false),
       passwordNew: Vue.ref(''),
       passwordConfirm: Vue.ref(''),
