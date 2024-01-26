@@ -12,20 +12,17 @@ This allows to have the same look & feel between the applications and the differ
 >* [https://trigodev.com/blog/how-to-customize-keycloak-themes](https://trigodev.com/blog/how-to-customize-keycloak-themes)
 
 
-## Understanding the kore theme
+## Understanding the KDK core theme
 
-The [kore](./themes/kore) extends the Keycloak's **base** them with the following types of customization:
+The [KDK](./themes/kdk) extends the Keycloak's **base** them with the following types of customization:
 * login
-
-_TODO_
-
  
 
-## Extending the kore theme
+## Extending the KDK theme
 
 ### Minimum file stucture
 
-The minimum file structure you need to create is:
+The minimum file structure you need to create is the following:
 ```
 my-theme
  ├ login
@@ -41,6 +38,15 @@ my-theme
 
 The [theme.properties](https://www.keycloak.org/docs/latest/server_development/index.html#theme-properties) file allows setting some configuration for the theme.
 
+A **theme.properties** file commonly has content like this
+
+```
+parent=kdk 
+import=common/keycloak
+locales=fr,en
+meta=viewport==width=device-width,initial-scale=1
+```
+
 #### config.js
 
 The `config.js` file allows you to configurr **Quasar** by defining a [Quasar Config Object](https://quasar.dev/start/umd/#quasar-config-object). 
@@ -53,25 +59,38 @@ The `config.js` file allows you to configurr **Quasar** by defining a [Quasar Co
 This file represents the application logo. 
 
 > [!TIP]
-> The recommend size is about 400 x 150 pixels.
+> The recommended size is about 400x150 pixels.
 
-### Checking the theme
+## Checking the theme
+
+To check the theme, we recomend to:
+
+1. create a realm for your application
+2. In `Realm Settings`, `Themes` tab, assign the app's theme to the `Login theme`
+3. Log in to the app: `https://<keycloak.url>/realms/<app>/account/#/`
+
+> [!NOTE]  
+> In local, the url for the `kapp` example will be the following: http://localhost:8080/realms/kapp/account/#/
+
+## Running Keycloak
+
+We provide a generic [Docker compose](https://docs.docker.com/compose/) file to let you run **Keycloak** locally and check your theme.
+
+### Deploying the stack
+
+The **Docker compose** file requires you to define the `POSTGRES_DATA_PATH` which allow to persist the **PostgreSQL** database, such as shown below:
 
 ```bash
-export POSTGRES_DATA_PATH=/home/$USER/Volumes/postgres
+ export POSTGRES_DATA_PATH=/home/$USER/Volumes/postgres
+```
+
+Then you are able to run the stack by typing the following command:
+
+```bash
 env UID=${UID} GID=${GID} docker compose -f keycloak-postgres.yml up -d
 ```
 
-### Removing the stack
-
-```bash
-docker compose -f keycloak-postgres.yml down
-```
-
-## Using Keycloak
-
-### Login to keycloak master realm
-
+You can now log in to **Keycloak**:
 1. Go to http://localhost:8080/
 2. Click `Administration Console`
 3. Login using the following credentials:
@@ -79,21 +98,18 @@ docker compose -f keycloak-postgres.yml down
   - User: admin
   - Password: Pass;word1
 
-### Login to the apps
+### Removing the stack
 
-### kdk
+To remove the stack, simply type the following command:
 
-Go to: http://localhost:8080/realms/kdk/account/#/
+```bash
+docker compose -f keycloak-postgres.yml down
+```
 
-### kapp
 
-Go to: http://localhost:8080/realms/kapp/account/#/
 
-### opal
 
-Go to: http://localhost:8080/realms/opal/account/#/
 
-#
 
 
 
