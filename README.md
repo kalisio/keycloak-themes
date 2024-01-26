@@ -16,7 +16,7 @@ The [KDK](./themes/kdk) theme extends the Keycloak's **base** theme with the fol
 * **Login**
 
 > [!IMPORTANT]
-> **Account**, **Admin** types can be easily extented from the **keycloak.v2** theme and we feel it is not worth providing such custom types in this theme.
+> Other types, such as **Account** and **Admin**, can be easily extented from the **keycloak.v2** theme and we feel it is not worth providing such custom types in the KDK theme.
 In the [kapp](./themes/kapp/) folder, we provide you with an example of customization of these different types.
 
 ### Login 
