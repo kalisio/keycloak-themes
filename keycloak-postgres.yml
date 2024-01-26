@@ -25,7 +25,7 @@ services:
       volumes:
         - ./themes/kdk:/opt/keycloak/themes/kdk      
         - ./themes/kapp:/opt/keycloak/themes/kapp
-        - ${IRSN_DEVELOPMENT_DIR}/opal-keycloak-theme/theme:/opt/keycloak/themes/opal
+        #- ${IRSN_DEVELOPMENT_DIR}/opal-keycloak-theme/theme:/opt/keycloak/themes/opal
       ports:
         - 8080:8080
       depends_on:
