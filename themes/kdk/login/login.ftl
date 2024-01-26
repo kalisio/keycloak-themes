@@ -19,7 +19,7 @@
           <#if !usernameHidden??>
             <div class="q-py-xs column">
               <q-input 
-                id="username" name="username" v-model="email" filled
+                id="input-username" name="username" v-model="email" filled
                 label="<#if !realm.loginWithEmailAllowed>${msg('username')}<#elseif !realm.registrationEmailAsUsername>${msg('usernameOrEmail')}<#else>${msg('email')}</#if>"
                 type="<#if !realm.loginWithEmailAllowed>text<#elseif !realm.registrationEmailAsUsername>text<#else>mail</#if>" 
                 :error="<#if messagesPerField.existsError('username','password')>true<#else>false</#if>"
@@ -30,7 +30,7 @@
           </#if>
           <div class="q-py-xs column">
             <q-input 
-              id="password" name="password" v-model="password" label="${msg('password')}" filled :type="showPassword ? 'text' : 'password'" autocomplete="off" 
+              id="input-password" name="password" v-model="password" label="${msg('password')}" filled :type="showPassword ? 'text' : 'password'" autocomplete="off" 
               :error="<#if usernameHidden?? && messagesPerField.existsError('username')>true<#else>false</#if>"
               error-message="${kcSanitize(messagesPerField.getFirstError('username','password'))?no_esc}"
               :hide-bottom-space="true"
@@ -44,12 +44,12 @@
           <div class="row justify-between items-center no-wrap">
             <#if realm.rememberMe && !usernameHidden??>
               <div>
-                <q-toggle id="rememberMe" name="rememberMe" v-model="rememberMe" false-value="off" true-value="on" label="${msg('rememberMe')}" />
+                <q-toggle id="remember-me" name="rememberMe" v-model="rememberMe" false-value="off" true-value="on" label="${msg('rememberMe')}" />
               </div>
             </#if>
             <#if realm.resetPasswordAllowed>
               <div>
-                <q-btn label="${msg('doForgotPassword')}" color="accent" flat rounded no-caps href="${url.loginResetCredentialsUrl}" />
+                <q-btn id="reset-password" label="${msg('doForgotPassword')}" color="accent" flat rounded no-caps href="${url.loginResetCredentialsUrl}" />
               </div>
             </#if>
           </div>
@@ -58,7 +58,7 @@
             class="row justify-center"
             :class="{ 'q-pa-sm': $q.screen.xs, 'q-pa-md': $q.screen.gt.xs }"
           >
-            <q-btn name="login" label="${msg('doLogin')}" color="primary" :loading="loginLoading" @click="loginLoading = true" type="submit" />
+            <q-btn id="login" name="login" label="${msg('doLogin')}" color="primary" :loading="loginLoading" @click="loginLoading = true" type="submit" />
           </div>
         </q-form>
       </div>
@@ -67,7 +67,7 @@
         <#if realm.password && realm.registrationAllowed && !registrationDisabled??>
           <div class="row justify-center items-center">
             <span>${msg('noAccount')}</span>
-            <q-btn label="${msg('doRegister')}" color="accent" flat rounded no-caps href="${url.registrationUrl}" />
+            <q-btn id="register" label="${msg('doRegister')}" color="accent" flat rounded no-caps href="${url.registrationUrl}" />
           </div>
         </#if>
       </div>
