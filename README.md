@@ -7,7 +7,7 @@ Just like the applications developed by Kalisio, these themes are based on the u
 This allows to have the same look & feel between the applications and the different user interfaces provided by Keycloak.
 
 > [!Note]
->Before going any further, it is essential to understand how themes work in Keycloak and how one can create a theme. Please refer to the [official documentation](https://www.keycloak.org/docs/latest/server_development/index.html#_themes).
+>Before going any further, it is essential to understand how themes work in Keycloak and how one can create a theme. Please refer to the [official documentation](https://www.keycloak.org/docs/latest/server_development/index.html#_themes) and [Apache FreeMarker](https://freemarker.apache.org/index.html).
 > You can also read the following articles:
 >* [https://trigodev.com/blog/how-to-customize-keycloak-themes](https://trigodev.com/blog/how-to-customize-keycloak-themes)
 
@@ -17,6 +17,19 @@ This allows to have the same look & feel between the applications and the differ
 The [KDK](./themes/kdk) extends the Keycloak's **base** them with the following types of customization:
 * login
  
+### Login 
+
+**Login** forms specialize a **FreeMaker** template file, `template.ftl`, that overwrite the default Keycloak `template.ftl` file. It is built on **Quasar Framework** to enable the use of web components to enhance user experience and to simplify the use of Keycloak CSS classes which are not well documented.
+
+The `template.ftl` file extends the Keycloak `template.ftl` by defining 4 **fragments**: 
+
+![Template fragments](./docs/keycloak-themes-fragments.png)
+
+> [!NOTE]
+> Remember that all these fragments are shared by all the different login forms.
+
+> [!TIP]
+>Each of these fragments, **header**, **banner**, **options** and **footer**, can be overwritten to fit your needs.
 
 ## Extending the KDK theme
 
@@ -33,6 +46,10 @@ my-theme
  |          └─ logo.png
  └─ theme.properties
 ```
+
+### Internationalization
+
+The **KDK** theme uses the current browser locale and override the **Keycloak** theme locale. You can therefore use FreeMaker's internationalization approach.
 
 #### theme.properties
 
@@ -61,6 +78,36 @@ This file represents the application logo.
 > [!TIP]
 > The recommended size is about 400x150 pixels.
 
+### Overwiting fragments
+
+In addition, one can overwrite each fragments to adapt the page to its current need.You just need to add the desired `<fragment>.ftl` file in a `fragments` folder under the `login` folder.
+
+For instance, if you need to overwrite the `options` fragment, add `options.ftl` file as shown below:
+```
+my-theme
+ ├ login
+ |   ├─ fragments
+ |   |   └─ options.ftl
+ |   └─ resources
+ |      ├─ js
+ |      |   └─ config.js
+ |      └─ img
+ |         └─ logo.png
+ └─ theme.properties
+```
+
+### Helper functions
+
+The **KDK** theme comes with an the `popup` function that enables you to display an **HTML** within a popup.
+
+For example, the following lines allow to open the `legal-notice` html file when clicking on the button. In that special case, the complete file name will be resolved according the the locale of the browser:
+
+```html
+<q-btn flat label="${msg('legalNotice')}" flat no-caps rounded 
+  @click="popup('${msg('legalNotice')}', '${url.resourcesPath}/html/legal-notice_${locale.currentLanguageTag}.html')" 
+/>
+```
+
 ## Checking the theme
 
 To check the theme, we recomend to:
@@ -74,7 +121,7 @@ To check the theme, we recomend to:
 
 ## Running Keycloak
 
-We provide a generic [Docker compose](https://docs.docker.com/compose/) file to let you run **Keycloak** locally and check your theme.
+We provide a generic [Docker compose](https://docs.docker.com/compose/) file to let you run **Keycloak** locally to check your theme.
 
 ### Deploying the stack
 
@@ -105,6 +152,19 @@ To remove the stack, simply type the following command:
 ```bash
 docker compose -f keycloak-postgres.yml down
 ```
+## Contributing
+
+Found a bug ? Missing a Feature ? Want to contribute ? check out our [contribution guidelines](https://kalisio.github.io/kdk/about/roadmap.html#contributing) for details
+
+## License
+
+This project is licensed under the MIT License - see the [license file](./LICENSE) for details
+
+## Authors
+
+This project is sponsored by 
+
+[![Kalisio](https://s3.eu-central-1.amazonaws.com/kalisioscope/kalisio/kalisio-logo-black-256x84.png)](https://kalisio.com)
 
 
 

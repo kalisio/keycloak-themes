@@ -7,7 +7,7 @@
   <div>|</div>
   <div>
     <q-btn flat label="${msg('dataPolicy')}" flat no-caps rounded 
-      @click="popup('${msg('legalNotice')}', '${url.resourcesPath}/html/data-policy_${locale.currentLanguageTag}.html')" 
+      @click="popup('${msg('dataPolicy')}', '${url.resourcesPath}/html/data-policy_${locale.currentLanguageTag}.html')" 
     />
   </div>
 </div>
