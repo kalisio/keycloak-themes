@@ -15,21 +15,24 @@ This allows to have the same look & feel between the applications and the differ
 ## Understanding the KDK core theme
 
 The [KDK](./themes/kdk) extends the Keycloak's **base** them with the following types of customization:
-* login
- 
+* **Login**
+
 ### Login 
 
-**Login** forms specialize a **FreeMaker** template file, `template.ftl`, that overwrite the default Keycloak `template.ftl` file. It is built on **Quasar Framework** to enable the use of web components to enhance user experience and to simplify the use of Keycloak CSS classes which are not well documented.
+**Login** forms specialize a **FreeMaker** template file, `template.ftl`, that overwrites the default Keycloak `template.ftl` file. It is built on **Quasar Framework** to enable the use of web components that enhance user experience and simplify the use of Keycloak CSS classes.
 
-The `template.ftl` file extends the Keycloak `template.ftl` by defining 4 **fragments**: 
+The provided `template.ftl` introduces 4 areas, called **fragments** which can be overwritten by child themes. The following image illustrates the 4 fragments: **header**, **banner**, **options** and **footer**.
 
 ![Template fragments](./docs/keycloak-themes-fragments.jpg)
 
 > [!NOTE]
 > Remember that all these fragments are shared by all the different login forms.
 
-> [!TIP]
->Each of these fragments, **header**, **banner**, **options** and **footer**, can be overwritten to fit your needs.
+### Account
+
+
+
+### Admin
 
 ## Extending the KDK theme
 
