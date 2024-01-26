@@ -32,6 +32,10 @@ The provided `template.ftl` introduces 4 areas, called **fragments** which can b
 > [!NOTE]
 > Remember that all these fragments are shared by all the different login forms.
 
+### Internationalization
+
+The **KDK** theme uses the current browser locale and override the **Keycloak** theme locale. You can therefore use FreeMaker's internationalization approach.
+
 ## Extending the KDK theme
 
 ### Minimum file stucture
@@ -47,10 +51,6 @@ my-theme
  |          └─ logo.png
  └─ theme.properties
 ```
-
-### Internationalization
-
-The **KDK** theme uses the current browser locale and override the **Keycloak** theme locale. You can therefore use FreeMaker's internationalization approach.
 
 #### theme.properties
 
@@ -79,7 +79,7 @@ This file represents the application logo.
 > [!TIP]
 > The recommended size is about 400x150 pixels.
 
-### Overwiting fragments
+### Overwriting fragments
 
 In addition, one can overwrite each fragments to adapt the page to its current need.You just need to add the desired `<fragment>.ftl` file in a `fragments` folder under the `login` folder.
 
