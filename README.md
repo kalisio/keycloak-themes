@@ -65,7 +65,7 @@ meta=viewport==width=device-width,initial-scale=1
 
 #### config.js
 
-The `config.js` file allows you to configurr **Quasar** by defining a [Quasar Config Object](https://quasar.dev/start/umd/#quasar-config-object). 
+The `config.js` file allows you to configure **Quasar** by defining a [Quasar Config Object](https://quasar.dev/start/umd/#quasar-config-object). 
 
 > [!TIP]
 > Use the Quasar Config Object to define the brand colors to be used in the application.
@@ -127,7 +127,7 @@ We provide a generic [Docker compose](https://docs.docker.com/compose/) file to 
 The **Docker compose** file requires you to define the `POSTGRES_DATA_PATH` which allow to persist the **PostgreSQL** database, such as shown below:
 
 ```bash
- export POSTGRES_DATA_PATH=/home/$USER/Volumes/postgres
+export POSTGRES_DATA_PATH=/home/$USER/Volumes/postgres
 ```
 
 Then you are able to run the stack by typing the following command:
