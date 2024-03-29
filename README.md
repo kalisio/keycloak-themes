@@ -124,16 +124,10 @@ We provide a generic [Docker compose](https://docs.docker.com/compose/) file to 
 
 ### Deploying the stack
 
-The **Docker compose** file requires you to define the `POSTGRES_DATA_PATH` which allow to persist the **PostgreSQL** database, such as shown below:
+As simple as that, just type the command:
 
 ```bash
-export POSTGRES_DATA_PATH=/home/$USER/Volumes/postgres
-```
-
-Then you are able to run the stack by typing the following command:
-
-```bash
-env UID=${UID} GID=${GID} docker compose -f keycloak-postgres.yml up -d
+docker compose up -d
 ```
 
 You can now log in to **Keycloak**:
@@ -149,7 +143,7 @@ You can now log in to **Keycloak**:
 To remove the stack, simply type the following command:
 
 ```bash
-docker compose -f keycloak-postgres.yml down
+docker compose up down
 ```
 ## Contributing
 

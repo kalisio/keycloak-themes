@@ -3,9 +3,8 @@ version: '3'
 services:
   postgres:
       image: postgres
-      user: ${UID}:${GID}
       volumes:
-        - ${POSTGRES_DATA_PATH}:/var/lib/postgresql/data
+        - keycloack-themes-postgres:/var/lib/postgresql/data
       environment:
         POSTGRES_DB: keycloak
         POSTGRES_USER: keycloak
@@ -30,3 +29,6 @@ services:
         - 8080:8080
       depends_on:
         - postgres
+
+volumes:
+  keycloack-themes-postgres:
