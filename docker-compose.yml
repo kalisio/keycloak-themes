@@ -10,7 +10,7 @@ services:
         POSTGRES_USER: keycloak
         POSTGRES_PASSWORD: password
   keycloak:
-      image: quay.io/keycloak/keycloak:22.0.1
+      image: quay.io/keycloak/keycloak:23.0.6
       command: start-dev --spi-theme-static-max-age=-1 --spi-theme-cache-themes=false --spi-theme-cache-templates=false
       environment:
         KC_DB: postgres
