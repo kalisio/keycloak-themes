@@ -14,6 +14,8 @@ if (appLocale !== kcLocale) {
 // Create the Vue app
 const app = Vue.createApp({
   setup () {
+    // Data
+    const environment = JSON.parse(String(document.querySelector('#environment').textContent))
     // Functions
     async function popup (title, file) {
      const content = await fetch(file)
@@ -29,9 +31,12 @@ const app = Vue.createApp({
     }
     // Expose 
     return {
-      email: Vue.ref(''),
+      email: Vue.ref(environment.user.email),
+      username: Vue.ref(environment.user.username),
+      firstName: Vue.ref(environment.user.firstName),
+      lastName: Vue.ref(environment.user.lastName),
       password: Vue.ref(''),  
-      rememberMe: Vue.ref('off'),
+      rememberMe: Vue.ref(environment.permissions.rememberMe ? 'on' : 'off'),
       loginLoading: Vue.ref(false),
       resetPasswordLoading: Vue.ref(false),
       passwordNew: Vue.ref(''),
