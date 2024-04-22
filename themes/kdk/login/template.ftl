@@ -23,12 +23,12 @@
   </#if>
   <#if properties.styles?has_content>
     <#list properties.styles?split(' ') as style>
-      <link href="${url.resourcesPath}/${style}" rel="stylesheet" />
+      <link href="${url.resourcesPath}/css/${style}" rel="stylesheet" />
     </#list>
   </#if>
   <#if properties.scripts?has_content>
     <#list properties.scripts?split(' ') as script>
-      <script src="${url.resourcesPath}/${script}" type="text/javascript"></script>
+      <script src="${url.resourcesPath}/js/${script}" type="text/javascript"></script>
     </#list>
   </#if> 
 </head>
@@ -71,7 +71,24 @@
       <div class="full-width row justify-center">
         <#include "fragments/footer.ftl">
       </div>
+    </div>
   </div>
+  <!--
+    Retrieve Keycloak environement
+  -->
+  <script id="environment" type="application/json">
+    {
+      "permissions": {
+        "rememberMe": <#if realm.rememberMe>true<#else>false</#if>
+      },
+      "user": {
+        "username": <#if user??>"${(user.username!'')}"<#else>""</#if>,
+        "email": <#if user??>"${(user.email!'')}"<#else>""</#if>,
+        "firstName": <#if user??>"${(user.firstName!'')}"<#else>""</#if>,
+        "lastName": <#if user??>"${(user.lastName!'')}"<#else>""</#if>
+      }
+    }
+  </script>
   <!-- 
     Use Vue and Quasar with UMD version
     For more information, refer to https://quasar.dev/start/umd#installation
