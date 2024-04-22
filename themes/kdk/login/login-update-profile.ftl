@@ -53,7 +53,7 @@
                 </div>
                 <!-- Submit actions -->
                 <div class="row justify-center" :class="{ 'q-pa-sm': $q.screen.xs, 'q-pa-md': $q.screen.gt.xs }">
-                    <#if !isAppInitiatedAction??>
+                    <#if isAppInitiatedAction??>
                         <q-btn id="login" name="login" class="q-mx-sm" label="${msg("doSubmit")}" color="primary" :loading="loginLoading" @click="loginLoading = true" type="submit"></q-btn>
                         <q-btn id="cancel-aia" name="cancel-aia" class="q-mx-sm" label="${msg("doCancel")}" color="negative" :loading="loginLoading" @click="loginLoading = true" type="submit"></q-btn>
                     <#else>
