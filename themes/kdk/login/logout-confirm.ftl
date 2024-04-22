@@ -10,19 +10,19 @@
         </div>
         <!-- Content -->
         <div class="full-width">
-            <p class="instruction">${msg("logoutConfirmHeader")}</p>
+            <p class="row justify-center">${msg("logoutConfirmHeader")}</p>
             <q-form action="${url.logoutConfirmAction}" method="post">
                 <input type="hidden" name="session_code" value="${logoutConfirm.code}">
-                <q-btn id="kc-logout" name="confirmLogout" label="${msg("doLogout")}" color="primary" :loading="loginLoading" @click="loginLoading = true" type="submit" />
-            </q-form>
-            <div id="kc-info-message">
-                <#if logoutConfirm.skipLink>
-                <#else>
-                    <#if (client.baseUrl)?has_content>
-                        <p><a href="${client.baseUrl}">${kcSanitize(msg("backToApplication"))?no_esc}</a></p>
+                <div class="row justify-around">
+                    <#if logoutConfirm.skipLink>
+                    <#else>
+                        <#if (client.baseUrl)?has_content>
+                            <q-btn href="${client.baseUrl}" color="primary" label="${kcSanitize(msg("backToApplication"))?no_esc}"></q-btn>
+                        </#if>
                     </#if>
-                </#if>
-            </div>
+                    <q-btn id="kc-logout" name="confirmLogout" label="${msg("doLogout")}" color="negative" :loading="loginLoading" @click="loginLoading = true" type="submit" />
+                </div>
+            </q-form>
         </div>
     </#if>
 </@layout.registrationLayout>
