@@ -45,6 +45,7 @@ const app = Vue.createApp({
       showPassword: Vue.ref(false),
       showPasswordNew: Vue.ref(false),
       showPasswordConfirm: Vue.ref(false),
+      submitAction: Vue.ref(''),
       popup
     }
   }
