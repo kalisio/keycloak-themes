@@ -17,10 +17,10 @@
                     <#if logoutConfirm.skipLink>
                     <#else>
                         <#if (client.baseUrl)?has_content>
-                            <q-btn href="${client.baseUrl}" color="primary" label="${kcSanitize(msg("backToApplication"))?no_esc}"></q-btn>
+                            <q-btn outline href="${client.baseUrl}" color="primary" label="${kcSanitize(msg("backToApplication"))?no_esc}"></q-btn>
                         </#if>
                     </#if>
-                    <q-btn id="kc-logout" name="confirmLogout" label="${msg("doLogout")}" color="negative" :loading="loginLoading" @click="loginLoading = true" type="submit" />
+                    <q-btn id="kc-logout" name="confirmLogout" label="${msg("doLogout")}" color="primary" :loading="loginLoading" @click="loginLoading = true" type="submit" />
                 </div>
             </q-form>
         </div>
