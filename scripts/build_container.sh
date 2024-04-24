@@ -39,7 +39,7 @@ load_value_files "$WORKSPACE_DIR/development/common/KALISIO_DOCKERHUB_PASSWORD.e
 ## Build container
 ##
 
-IMAGE_NAME="kalisio/keycloak-themes"
+IMAGE_NAME="kalisio/kdk-keycloak-themes"
 if [[ -z "$GIT_TAG" ]]; then
     IMAGE_TAG=latest
 else
@@ -47,9 +47,6 @@ else
 fi
 
 begin_group "Building container ${IMAGE_NAME}:${IMAGE_TAG}"
-
-pwd && ls 
-echo $WORKSPACE_DIR
 
 docker login --username "$KALISIO_DOCKERHUB_USERNAME" --password-stdin < "$KALISIO_DOCKERHUB_PASSWORD"
 # DOCKER_BUILDKIT is here to be able to use Dockerfile specific dockerginore (app.Dockerfile.dockerignore)
