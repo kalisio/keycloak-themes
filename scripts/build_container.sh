@@ -20,7 +20,7 @@ while getopts "pr:" option; do
             ;;
         r) # report outcome to slack
             CI_STEP_NAME=$OPTARG
-            trap 'slack_ci_report "$ROOT_DIR" "$CI_STEP_NAME" "$?" "$SLACK_WEBHOOK_SERVICES"' EXIT
+            trap 'slack_ci_report "$ROOT_DIR" "$CI_STEP_NAME" "$?" "$SLACK_WEBHOOK_TOOLS"' EXIT
             ;;
         *)
             ;;
@@ -31,9 +31,9 @@ done
 ##
 
 WORKSPACE_DIR="$(dirname "$ROOT_DIR")"
-GIT_TAG=GIT_TAG=$(get_git_tag "$REPO_ROOT")
+GIT_TAG=GIT_TAG=$(get_git_tag "$ROOT_DIR")
 
-load_env_files "$WORKSPACE_DIR/development/common/kalisio_dockerhub.enc.env" "$WORKSPACE_DIR/development/common/SLACK_WEBHOOK_SERVICES.enc.env"
+load_env_files "$WORKSPACE_DIR/development/common/kalisio_dockerhub.enc.env" "$WORKSPACE_DIR/development/common/SLACK_WEBHOOK_TOOLS.enc.env"
 load_value_files "$WORKSPACE_DIR/development/common/KALISIO_DOCKERHUB_PASSWORD.enc.value"
 
 ## Build container
