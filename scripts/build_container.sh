@@ -48,7 +48,8 @@ fi
 
 begin_group "Building container ${IMAGE_NAME}:${IMAGE_TAG}"
 
-pwd && ls
+pwd && ls 
+echo $WORKSPACE_DIR
 
 docker login --username "$KALISIO_DOCKERHUB_USERNAME" --password-stdin < "$KALISIO_DOCKERHUB_PASSWORD"
 # DOCKER_BUILDKIT is here to be able to use Dockerfile specific dockerginore (app.Dockerfile.dockerignore)
