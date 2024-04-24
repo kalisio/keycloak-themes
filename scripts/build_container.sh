@@ -31,9 +31,7 @@ done
 ##
 
 WORKSPACE_DIR="$(dirname "$ROOT_DIR")"
-GIT_TAG=get_git_tag
-
-echo "About to build theme..."
+GIT_TAG=GIT_TAG=$(get_git_tag "$REPO_ROOT")
 
 load_env_files "$WORKSPACE_DIR/development/common/kalisio_dockerhub.enc.env" "$WORKSPACE_DIR/development/common/SLACK_WEBHOOK_SERVICES.enc.env"
 load_value_files "$WORKSPACE_DIR/development/common/KALISIO_DOCKERHUB_PASSWORD.enc.value"
