@@ -31,13 +31,9 @@ done
 ##
 
 WORKSPACE_DIR="$(dirname "$ROOT_DIR")"
-init_lib_infos "$ROOT_DIR"
+GIT_TAG=get_git_tag
 
-LIB=$(get_lib_name)
-VERSION=$(get_lib_version)
-GIT_TAG=$(get_lib_tag)
-
-echo "About to build ${LIB} v${VERSION}..."
+echo "About to build theme..."
 
 load_env_files "$WORKSPACE_DIR/development/common/kalisio_dockerhub.enc.env" "$WORKSPACE_DIR/development/common/SLACK_WEBHOOK_SERVICES.enc.env"
 load_value_files "$WORKSPACE_DIR/development/common/KALISIO_DOCKERHUB_PASSWORD.enc.value"
@@ -49,7 +45,7 @@ IMAGE_NAME="kalisio/keycloak-themes"
 if [[ -z "$GIT_TAG" ]]; then
     IMAGE_TAG=latest
 else
-    IMAGE_TAG=$VERSION
+    IMAGE_TAG=$GIT_TAG
 fi
 
 begin_group "Building container ..."
