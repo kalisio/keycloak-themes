@@ -31,7 +31,7 @@ done
 ##
 
 WORKSPACE_DIR="$(dirname "$ROOT_DIR")"
-GIT_TAG=GIT_TAG=$(get_git_tag "$ROOT_DIR")
+GIT_TAG=$(get_git_tag "$ROOT_DIR")
 
 load_env_files "$WORKSPACE_DIR/development/common/kalisio_dockerhub.enc.env" "$WORKSPACE_DIR/development/common/SLACK_WEBHOOK_TOOLS.enc.env"
 load_value_files "$WORKSPACE_DIR/development/common/KALISIO_DOCKERHUB_PASSWORD.enc.value"
