@@ -36,6 +36,6 @@ else
     git_shallow_clone "$GITHUB_URL/kalisio/keycloak-themes.git" "$WORKSPACE_DIR/keycloak-themes" "${WORKSPACE_TAG:-${WORKSPACE_BRANCH:-}}"
 fi
 
-setup_lib_workspace "$WORKSPACE_DIR" "$DEVELOPMENT_REPO_URL"
+setup_workspace "$WORKSPACE_DIR" "$DEVELOPMENT_REPO_URL"
 
 end_group "Setting up workspace ..."
