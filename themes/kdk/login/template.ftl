@@ -1,9 +1,10 @@
 <#macro registrationLayout bodyClass="" displayInfo=false displayMessage=true displayRequiredFields=false>
 <!DOCTYPE html>
-<html <#if realm.internationalizationEnabled> lang="${locale.currentLanguageTag}"</#if>>
+<html <#if realm.internationalizationEnabled>lang="${locale.currentLanguageTag}"</#if>>
 
 <head>
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css">
+  <link href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" rel= "stylesheet" type="text/css">
   <link href="https://cdn.jsdelivr.net/npm/quasar@2.14.1/dist/quasar.prod.css" rel="stylesheet" type="text/css">
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -45,7 +46,7 @@
       <!-- 
         Content 
       -->
-      <div class="row justify-center" style="max-width: 500px;"> 
+      <div class="row justify-center" style="min-width: 320px; width: 75%; max-width: 540px"> 
         <q-card class="full-width bg-white column justify-center">
           <!-- banner -->
           <div>
@@ -56,9 +57,7 @@
             <#nested "form">
           </div>
           <!-- social providers -->
-          <#if social.providers??>
-            <#nested "socialProviders">
-          </#if>
+          <#nested "socialProviders">
         </q-card>
         <!-- global options -->
         <div :class="{ 'q-pt-xs': $q.screen.xs, 'q-pt-sm': $q.screen.gt.xs }">
@@ -78,6 +77,10 @@
   -->
   <script id="environment" type="application/json">
     {
+      "i18n": {
+        "enabled": <#if realm.internationalizationEnabled>true<#else>false</#if>,
+        "language": <#if realm.internationalizationEnabled>"${locale.currentLanguageTag}"<#else>null</#if>
+      },
       "permissions": {
         "rememberMe": <#if realm.rememberMe>true<#else>false</#if>
       },
@@ -95,14 +98,17 @@
   -->
   <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/quasar@2.14.1/dist/quasar.umd.prod.js"></script>
+  <!-- Install Quasar language pack -->
+  <#if realm.internationalizationEnabled>
+    <#if properties.locales?has_content>
+      <#list properties.locales?split(',') as locale>
+        <script src="https://cdn.jsdelivr.net/npm/quasar@2.14.1/dist/lang/${locale}.umd.prod.js"></script>
+      </#list>      
+    </#if>
+    <script>Quasar.lang.set(Quasar.lang.${locale.currentLanguageTag})</script>
+  </#if>
   <script src="${url.resourcesPath}/js/config.js"></script>  
   <script src="${url.resourcesPath}/js/quasar.js"></script>
-  <!-- Install Quasar language pack -->
-  <#if properties.locales?has_content>
-    <#list properties.locales?split(',') as locale>
-      <script>Quasar.lang.set(Quasar.lang.${locale})</script>
-    </#list>      
-  </#if> 
 </body>
 </html>
 </#macro>

@@ -30,7 +30,7 @@
         </div>
         <!-- back to login actions -->
         <div>
-          <q-btn label="${kcSanitize(msg('backToLogin'))?no_esc}" color="accent" flat rounded no-caps href="${url.loginUrl}" />
+          <q-btn icon="las la-arrow-left" label="${kcSanitize(msg('backToLogin'))?no_esc}" color="accent" flat rounded no-caps href="${url.loginUrl}" />
         </div>
       </div>
     </q-form>

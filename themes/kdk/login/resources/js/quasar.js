@@ -3,14 +3,6 @@
   see https://quasar.dev/start/umd/#quasar-config-object
 */ 
 
-// Override locale
-const appLocale = Quasar.lang.getLocale().substring(0, 2)
-const kcLocale = Quasar.Cookies.get('KEYCLOAK_LOCALE')
-if (appLocale !== kcLocale) {
-  Quasar.Cookies.set('KEYCLOAK_LOCALE', appLocale)
-  location.reload()
-}
-
 // Create the Vue app
 const app = Vue.createApp({
   setup () {
