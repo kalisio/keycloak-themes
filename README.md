@@ -32,7 +32,12 @@ The provided `template.ftl` introduces 4 areas, called **fragments** which can b
 
 ### Internationalization
 
-The **KDK** theme uses the current browser locale and override the **Keycloak** theme locale. You can therefore use FreeMaker's internationalization approach.
+Internationalization is in line with Keycloak's approach.
+
+Consequently, the popup function will attempt to localize the specified file based on the current locale settings using the following schema: `<basename>_<locale>.<extension>`
+
+> [!IMPORTANT] 
+> If internationalization is disabled, the locale is set to `en`.
 
 ## Extending the KDK theme
 
