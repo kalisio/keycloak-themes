@@ -14,7 +14,7 @@ const app = Vue.createApp({
       const index = file.lastIndexOf('.')
       const baseName = index > 0 ? file.substring(0, index) : file
       const extName = index > 0 ? file.substring(index, file.length) : ''
-      const locale = environment.i18n.locale || 'en'
+      const locale = environment.realm.i18n.locale || 'en'
       const localizedFile = `${baseName}_${locale}${extName}`
       // read the file content
       const content = await fetch(localizedFile)
@@ -36,7 +36,7 @@ const app = Vue.createApp({
       firstName: Vue.ref(environment.user.firstName),
       lastName: Vue.ref(environment.user.lastName),
       password: Vue.ref(''),  
-      rememberMe: Vue.ref(environment.permissions.rememberMe ? 'on' : 'off'),
+      rememberMe: Vue.ref(environment.realm.rememberMe ? 'on' : 'off'),
       loginLoading: Vue.ref(false),
       resetPasswordLoading: Vue.ref(false),
       passwordNew: Vue.ref(''),

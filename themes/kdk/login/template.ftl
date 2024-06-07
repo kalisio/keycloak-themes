@@ -77,11 +77,11 @@
   -->
   <script id="environment" type="application/json">
     {
-      "i18n": {
-        "enabled": <#if realm.internationalizationEnabled>true<#else>false</#if>,
-        "locale": <#if realm.internationalizationEnabled>"${locale.currentLanguageTag}"<#else>null</#if>
-      },
-      "permissions": {
+      "realm": {
+        "i18n": {
+          "enabled": <#if realm.internationalizationEnabled>true<#else>false</#if>,
+          "locale": <#if realm.internationalizationEnabled>"${locale.currentLanguageTag}"<#else>null</#if>
+        },
         "rememberMe": <#if realm.rememberMe>true<#else>false</#if>
       },
       "user": {
