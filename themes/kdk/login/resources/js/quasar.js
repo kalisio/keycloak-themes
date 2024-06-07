@@ -23,7 +23,7 @@ const app = Vue.createApp({
         title,
         message: await content.text(),
         html: true,
-        style: 'min-width: 320px, width: 75%; max-width: 640px;',
+        style: 'width: 800px; max-width: 90vw;',
         ok: {
           color: 'primary'
         }

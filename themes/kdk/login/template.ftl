@@ -46,7 +46,7 @@
       <!-- 
         Content 
       -->
-      <div class="row justify-center" style="min-width: 320px; width: 75%; max-width: 540px"> 
+      <div class="row justify-center" style="width: 600px; max-width: 95vw;"> 
         <q-card class="full-width bg-white column justify-center">
           <!-- banner -->
           <div>
