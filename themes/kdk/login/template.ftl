@@ -79,7 +79,7 @@
     {
       "i18n": {
         "enabled": <#if realm.internationalizationEnabled>true<#else>false</#if>,
-        "language": <#if realm.internationalizationEnabled>"${locale.currentLanguageTag}"<#else>null</#if>
+        "locale": <#if realm.internationalizationEnabled>"${locale.currentLanguageTag}"<#else>null</#if>
       },
       "permissions": {
         "rememberMe": <#if realm.rememberMe>true<#else>false</#if>

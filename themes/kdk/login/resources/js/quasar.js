@@ -10,12 +10,20 @@ const app = Vue.createApp({
     const environment = JSON.parse(String(document.querySelector('#environment').textContent))
     // Functions
     async function popup (title, file) {
-     const content = await fetch(file)
+      // compute the localized file
+      const index = file.lastIndexOf('.')
+      const baseName = index > 0 ? file.substring(0, index) : file
+      const extName = index > 0 ? file.substring(index, file.length) : ''
+      const locale = environment.i18n.locale || 'en'
+      const localizedFile = `${baseName}_${locale}${extName}`
+      // read the file content
+      const content = await fetch(localizedFile)
+      // open the dialog
       Quasar.Dialog.create({
         title,
         message: await content.text(),
         html: true,
-        style: 'width: 800px; max-width: 90vw;',
+        style: 'min-width: 320px, width: 75%; max-width: 640px;',
         ok: {
           color: 'primary'
         }
