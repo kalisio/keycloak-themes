@@ -47,6 +47,7 @@ The minimum file structure you need to create is the following:
 ```
 my-theme
  ├ login
+ |   |_ theme.json
  |   └─ resources
  |      ├─ js
  |      |   └─ config.js
@@ -54,6 +55,23 @@ my-theme
  |          └─ logo.png
  └─ theme.properties
 ```
+#### theme.json
+
+The `theme.json` file allows you to provide extra informations that can be used by the various fragments.
+
+By default the `theme.json` provides version informations for the theme as well as for the parent KDK theme:
+
+```json
+{
+  "version": {
+    "theme": "latest",
+    "kdkTheme": "latest"
+  }
+}
+```
+
+> [!NOTE]
+> These informations are used by the default `footer.ftl` fragment which displays the different version in a tooltip.
 
 #### theme.properties
 
