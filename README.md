@@ -49,26 +49,11 @@ my-theme
  └─login
      |_ theme.properties
      └─ resources
-        ├─ theme.json
         ├─ js
         |   └─ config.js
         └─ img
             └─ logo.png
 
-```
-#### theme.json
-
-The `theme.json` file allows you to provide extra informations that can be used by the various fragments.
-
-By default the `theme.json` provides version informations for the theme as well as for the parent KDK theme:
-
-```json
-{
-  "version": {
-    "theme": "latest",
-    "kdkTheme": "latest"
-  }
-}
 ```
 
 > [!NOTE]
@@ -86,6 +71,13 @@ import=common/keycloak
 locales=fr,en
 meta=viewport==width=device-width,initial-scale=1
 ```
+
+In addition, this theme provides 2 additional variables: 
+* `version`: which allows you to define the version of your theme.
+* `kdkVersion`: which allows you to define the version of the KDK theme.
+
+> [!TIP]
+> These variables can be useful to customize your CI process.
 
 #### config.js
 

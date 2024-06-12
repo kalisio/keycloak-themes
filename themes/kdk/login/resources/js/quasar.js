@@ -10,14 +10,11 @@ const app = Vue.createApp({
     const environment = JSON.parse(String(document.querySelector('#environment').textContent))
     let informations = null
     // functions
-    function getInformations () {
-      if (!informations) {
-        informations = JSON.parse(String(document.querySelector('#informations').textContent))
+    function version () {
+      return {
+        theme: themeVersion,
+        kdk: kdkVersion
       }
-      return informations
-    }
-    function getVersion () {
-      return getInformations().version
     }
     async function popup (title, file) {
       // compute the localized file
@@ -56,8 +53,7 @@ const app = Vue.createApp({
       showPasswordNew: Vue.ref(false),
       showPasswordConfirm: Vue.ref(false),
       submitAction: Vue.ref(''),
-      getInformations,
-      getVersion,
+      version,
       popup
     }
   }

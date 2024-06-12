@@ -31,7 +31,25 @@
     <#list properties.scripts?split(' ') as script>
       <script src="${url.resourcesPath}/js/${script}" type="text/javascript"></script>
     </#list>
-  </#if> 
+  </#if>
+  <#if properties.version?has_content>
+    <script>
+      const themeVersion = '${properties.version}'
+    </script>
+  <#else>
+    <script>
+      const themeVersion = undefined
+    </script>
+  </#if>
+  <#if properties.kdkVersion?has_content>
+    <script>
+      const kdkVersion = '${properties.kdkVersion}'
+    </script>
+  <#else>
+    <script>
+      const kdkVersion = undefined
+    </script>      
+  </#if>
 </head>
 
 <body>
@@ -92,21 +110,6 @@
         "lastName": <#if user??>"${(user.lastName!'')}"<#else>""</#if>
       }
     }
-  </script>
-  <!--
-    Retrieve theme informations
-  -->  
-  <script id="informations" type="application/json">
-    { }
-  </script>
-  <script>
-    (async function () {
-      const response = await fetch('${url.resourcesPath}/theme.json')
-      if (response.ok) {
-        const informations = document.querySelector('#informations')
-        informations.text = await response.text()
-      }
-    })()
   </script>
   <!-- 
     Use Vue and Quasar with UMD version
