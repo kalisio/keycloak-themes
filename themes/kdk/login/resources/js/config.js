@@ -1,4 +1,8 @@
 const config = {
+  version: {
+    theme: 'latest',
+    kdkTheme: 'latest'
+  },
   brand: {
     primary: '#293341',
     secondary: '#415168',

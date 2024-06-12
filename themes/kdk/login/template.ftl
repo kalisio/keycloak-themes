@@ -107,7 +107,7 @@
     </#if>
     <script>Quasar.lang.set(Quasar.lang.${locale.currentLanguageTag})</script>
   </#if>
-  <script src="${url.resourcesPath}/js/config.js"></script>  
+  <script src="${url.resourcesPath}/js/config.js"></script>
   <script src="${url.resourcesPath}/js/quasar.js"></script>
 </body>
 </html>

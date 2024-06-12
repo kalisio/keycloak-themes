@@ -29,6 +29,9 @@ const app = Vue.createApp({
         }
       })
     }
+    function version () {
+      return config.version
+    }
     // Expose 
     return {
       email: Vue.ref(environment.user.email),
@@ -46,6 +49,7 @@ const app = Vue.createApp({
       showPasswordNew: Vue.ref(false),
       showPasswordConfirm: Vue.ref(false),
       submitAction: Vue.ref(''),
+      version,
       popup
     }
   }

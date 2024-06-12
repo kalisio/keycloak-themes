@@ -1,13 +1,15 @@
-<div class="column items-center justify-end">
-  <div class="row items-center">
-    <span id="kdk-label">${msg('madeWithKDK')}</span>
-    <q-btn id="kdk-link" icon="link" tooltip="${msg('moreAboutKDK')}" size="sm" href="https://kalisio.github.io/kdk" target="_blank" flat round>
-      <q-tooltip>
-        ${msg('aboutKDK')}
+<div class="q-pa-sm column items-center justify-end">
+  <div class="row justify-center items-center q-gutter-x-sm">
+    <q-icon id="theme-info" name="las la-info-circle" size="sm">
+      <q-tooltip class="bg-primary text-white text-caption">
+        <div>${msg('themeVersion')}: <b>{{ version().theme }}</b></div>
+        <div>${msg('kdkThemeVersion')}: <b>{{ version().kdkTheme }}</b></div>
       </q-tooltip>
-    </q-btn>
+    </q-icon>
+    <div>|</div>
+    <div>
+      ${msg('designBy')}
+      <a href="https://kalisio.com" target="_blank">Kalisio</a>
+    </div>
   </div>
-  <a href="https://kalisio.com" target="_blank">
-    <img id="kdk-logo" loading="lazy" src="${url.resourcesPath}/img/kalisio.webp" width="80px"/>
-  </a>
 </div>
