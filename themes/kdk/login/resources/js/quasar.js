@@ -6,9 +6,19 @@
 // Create the Vue app
 const app = Vue.createApp({
   setup () {
-    // Data
+    // data
     const environment = JSON.parse(String(document.querySelector('#environment').textContent))
-    // Functions
+    let informations = null
+    // functions
+    function getInformations () {
+      if (!informations) {
+        informations = JSON.parse(String(document.querySelector('#informations').textContent))
+      }
+      return informations
+    }
+    function getVersion () {
+      return getInformations().version
+    }
     async function popup (title, file) {
       // compute the localized file
       const index = file.lastIndexOf('.')
@@ -29,9 +39,6 @@ const app = Vue.createApp({
         }
       })
     }
-    function version () {
-      return config.version
-    }
     // Expose 
     return {
       email: Vue.ref(environment.user.email),
@@ -49,15 +56,18 @@ const app = Vue.createApp({
       showPasswordNew: Vue.ref(false),
       showPasswordConfirm: Vue.ref(false),
       submitAction: Vue.ref(''),
-      version,
+      getInformations,
+      getVersion,
       popup
     }
   }
 })
+
 // Tell Vue to use Quasar using the specified configuration
 app.use(Quasar, {
   config
 })
+
 // Mount the Quasar app
 app.mount('#q-app')
 

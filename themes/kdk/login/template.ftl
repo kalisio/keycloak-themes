@@ -78,6 +78,7 @@
   <script id="environment" type="application/json">
     {
       "realm": {
+        "resourcesPath": "${url.resourcesPath}",
         "i18n": {
           "enabled": <#if realm.internationalizationEnabled>true<#else>false</#if>,
           "locale": <#if realm.internationalizationEnabled>"${locale.currentLanguageTag}"<#else>null</#if>
@@ -91,6 +92,18 @@
         "lastName": <#if user??>"${(user.lastName!'')}"<#else>""</#if>
       }
     }
+  </script>
+  <!--
+    Retrieve theme informations
+  -->  
+  <script id="informations" type="application/json">
+  </script>
+  <script>
+    (async function () {
+      const response = await fetch('${url.resourcesPath}/theme.json')
+      const informations = document.querySelector('#informations')
+      informations.text = await response.text()
+    })()
   </script>
   <!-- 
     Use Vue and Quasar with UMD version
