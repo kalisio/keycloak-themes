@@ -97,12 +97,15 @@
     Retrieve theme informations
   -->  
   <script id="informations" type="application/json">
+    { }
   </script>
   <script>
     (async function () {
       const response = await fetch('${url.resourcesPath}/theme.json')
-      const informations = document.querySelector('#informations')
-      informations.text = await response.text()
+      if (response.ok) {
+        const informations = document.querySelector('#informations')
+        informations.text = await response.text()
+      }
     })()
   </script>
   <!-- 
