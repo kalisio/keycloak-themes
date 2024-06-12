@@ -46,14 +46,15 @@ Consequently, the popup function will attempt to localize the specified file bas
 The minimum file structure you need to create is the following:
 ```
 my-theme
- ├ login
- |   |_ theme.json
- |   └─ resources
- |      ├─ js
- |      |   └─ config.js
- |      └─ img
- |          └─ logo.png
- └─ theme.properties
+ └─login
+     |_ theme.properties
+     └─ resources
+        ├─ theme.json
+        ├─ js
+        |   └─ config.js
+        └─ img
+            └─ logo.png
+
 ```
 #### theme.json
 
@@ -108,14 +109,15 @@ For instance, if you need to overwrite the `options` fragment, add `options.ftl`
 ```
 my-theme
  ├ login
- |   ├─ fragments
- |   |   └─ options.ftl
- |   └─ resources
- |      ├─ js
- |      |   └─ config.js
- |      └─ img
- |         └─ logo.png
- └─ theme.properties
+     |_ theme.properties
+     ├─ fragments
+     |   └─ options.ftl
+     └─ resources
+        ├─ theme.json     
+        ├─ js
+        |   └─ config.js
+        └─ img
+           └─ logo.png
 ```
 
 ### Helper functions
