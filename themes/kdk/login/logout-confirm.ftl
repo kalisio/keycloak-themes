@@ -13,6 +13,7 @@
             <p class="row justify-center">${msg("logoutConfirmHeader")}</p>
             <q-form action="${url.logoutConfirmAction}" method="post">
                 <input type="hidden" name="session_code" value="${logoutConfirm.code}">
+                <input type="hidden" name="confirmLogout" value="${msg("doLogout")}">
                 <div class="row justify-around">
                     <#if logoutConfirm.skipLink>
                     <#else>
