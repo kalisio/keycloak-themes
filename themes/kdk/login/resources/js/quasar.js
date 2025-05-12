@@ -8,7 +8,6 @@ const app = Vue.createApp({
   setup () {
     // data
     const environment = JSON.parse(String(document.querySelector('#environment').textContent))
-    let informations = null
     // functions
     function version () {
       return {
@@ -25,10 +24,11 @@ const app = Vue.createApp({
       const localizedFile = `${baseName}_${locale}${extName}`
       // read the file content
       const content = await fetch(localizedFile)
+      const message = await content.text()
       // open the dialog
       Quasar.Dialog.create({
         title,
-        message: await content.text(),
+        message,
         html: true,
         style: 'width: 800px; max-width: 90vw;',
         ok: {
