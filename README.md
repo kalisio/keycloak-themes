@@ -19,7 +19,7 @@ The [KDK](./themes/kdk) theme extends the Keycloak's **base** theme with the fol
 > Other types, such as **Account** and **Admin**, can be easily extented from the **keycloak.v2** theme and we feel it is not worth providing such custom types in the KDK theme.
 In the [kapp](./themes/kapp/) folder, we provide you with an example of customization of these different types.
 
-### Login 
+### Login
 
 **Login** forms specialize a **FreeMaker** template file, `template.ftl`, that overwrites the default Keycloak `template.ftl` file. It is built on **Quasar Framework** to enable the use of web components that enhance user experience and simplify the use of Keycloak CSS classes.
 
@@ -36,7 +36,7 @@ Internationalization is in line with Keycloak's approach.
 
 Consequently, the popup function will attempt to localize the specified file based on the current locale settings using the following schema: `<basename>_<locale>.<extension>`
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > If internationalization is disabled, the locale is set to `en`.
 
 ## Extending the KDK theme
@@ -66,13 +66,13 @@ The [theme.properties](https://www.keycloak.org/docs/latest/server_development/i
 A **theme.properties** file commonly has content like this
 
 ```
-parent=kdk 
+parent=kdk
 import=common/keycloak
 locales=fr,en
 meta=viewport==width=device-width,initial-scale=1
 ```
 
-In addition, this theme provides 2 additional variables: 
+In addition, this theme provides 2 additional variables:
 * `version`: which allows you to define the version of your theme.
 * `kdkVersion`: which allows you to define the version of the KDK theme.
 
@@ -81,14 +81,14 @@ In addition, this theme provides 2 additional variables:
 
 #### config.js
 
-The `config.js` file allows you to configure **Quasar** by defining a [Quasar Config Object](https://quasar.dev/start/umd/#quasar-config-object). 
+The `config.js` file allows you to configure **Quasar** by defining a [Quasar Config Object](https://quasar.dev/start/umd/#quasar-config-object).
 
 > [!TIP]
 > Use the Quasar Config Object to define the brand colors to be used in the application.
 
 #### logo.png
 
-This file represents the application logo. 
+This file represents the application logo.
 
 > [!TIP]
 > The recommended size is about 400x150 pixels.
@@ -105,7 +105,7 @@ my-theme
      ├─ fragments
      |   └─ options.ftl
      └─ resources
-        ├─ theme.json     
+        ├─ theme.json
         ├─ js
         |   └─ config.js
         └─ img
@@ -119,8 +119,8 @@ The **KDK** theme comes with an the `popup` function that enables you to display
 For example, the following lines allow to open the `legal-notice` html file when clicking on the button. In that special case, the complete file name will be resolved according the the locale of the browser:
 
 ```html
-<q-btn flat label="${msg('legalNotice')}" flat no-caps rounded 
-  @click="popup('${msg('legalNotice')}', '${url.resourcesPath}/html/legal-notice_${locale.currentLanguageTag}.html')" 
+<q-btn flat label="${msg('legalNotice')}" flat no-caps rounded
+  @click="popup('${msg('legalNotice')}', '${url.resourcesPath}/html/legal-notice_${locale.currentLanguageTag}.html')"
 />
 ```
 
@@ -132,7 +132,7 @@ To check the theme, we recomend to:
 2. In `Realm Settings`, `Themes` tab, assign the app's theme to the `Login theme`
 3. Log in to the app: `https://<keycloak.url>/realms/<app>/account/#/`
 
-> [!NOTE]  
+> [!NOTE]
 > In local, the url for the `kapp` example will be the following: http://localhost:8080/realms/kapp/account/#/
 
 ## Running Keycloak
@@ -151,7 +151,7 @@ You can now log in to **Keycloak**:
 1. Go to http://localhost:8080/
 2. Click `Administration Console`
 3. Login using the following credentials:
-  
+
   - User: admin
   - Password: Pass;word1
 
@@ -168,13 +168,11 @@ Found a bug ? Missing a Feature ? Want to contribute ? check out our [contributi
 
 ## License
 
-This project is licensed under the MIT License - see the [license file](./LICENSE) for details
+Licensed under the [MIT license](LICENSE).
 
-## Authors
+Copyright (c) 2017-20xx [Kalisio](https://kalisio.com)
 
-This project is sponsored by 
-
-[![Kalisio](https://s3.eu-central-1.amazonaws.com/kalisioscope/kalisio/kalisio-logo-black-256x84.png)](https://kalisio.com)
+[![Kalisio](https://kalisio.github.io/kalisioscope/kalisio/kalisio-logo-black-256x84.png)](https://kalisio.com)
 
 
 
